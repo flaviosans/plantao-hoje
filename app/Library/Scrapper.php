@@ -24,10 +24,11 @@ class Scrapper
         $html = file_get_contents('https://cosmos.bluesoft.com.br/produtos/' . $codigo_barras);
         $produto = new Produto;
         preg_match("/e>.+- GTIN/", $html,         $nome);
-        preg_match("/[0-9]{13}/", $html, $codigo_barras);
+        // preg_match("/[0-9]{13}/", $html, $codigo_barras);
 
         $produto->nome = substr($nome[0], 2, -7);
-        $produto->codigo_barras = $codigo_barras[0];
+        $produto->nome = ucfirst($produto->nome);
+        $produto->codigo_barras = $codigo_barras;
 
         $produto->save();
 
