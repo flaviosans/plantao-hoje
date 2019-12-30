@@ -16,6 +16,10 @@
                 <input class="form-control" type="text" name="nome" value="{{$produto->nome or old('nome')}}">
             </div>
             <div class="form-group">
+                <label for="codigo_barras">Código de Barras</label>
+                <input class="form-control" type="text" name="codigo_barras" value="{{$produto->codigo_barras or old('codigo_barras')}}">
+            </div>
+            <div class="form-group">
                 <label for="nome"></label>
                 <input type="checkbox" name="proprio" value="proprio" {{isset($produto) && $produto->loja != null ? 'checked' : ''}}>Marque aqui se esse produto é exclusivo/Fabricação própria dessa loja
             </div>
