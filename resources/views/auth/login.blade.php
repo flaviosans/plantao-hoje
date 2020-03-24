@@ -20,9 +20,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link href="/adm/css/font-awesome.css" rel="stylesheet">
 <!-- //font-awesome icons -->
 
-<!-- web font -->
-<link href="//fonts.googleapis.com/css?family=Cormorant+Unicase:300,400,500,600,700" rel="stylesheet"><!--web font-->
-<!-- //web font -->
 </head>
 <body>
 	<!-- main -->

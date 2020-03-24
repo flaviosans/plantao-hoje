@@ -1,0 +1,16 @@
+{
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/js/select2.min.js": "/js/select2.min.js",
+    "/js/jquery-2.2.3.min.js": "/js/jquery-2.2.3.min.js",
+    "/js/respond.min.js": "/js/respond.min.js",
+    "/js/html5shiv.min.js": "/js/html5shiv.min.js",
+    "/js/jquery.inputmask.js": "/js/jquery.inputmask.js",
+    "/js/jquery.inputmask.extensions.js": "/js/jquery.inputmask.extensions.js",
+    "/js/jquery.inputmask.date.extensions.js": "/js/jquery.inputmask.date.extensions.js",
+    "/js/bootstrap-datepicker.pt-BR.js": "/js/bootstrap-datepicker.pt-BR.js",
+    "/js/bootstrap-datepicker.js": "/js/bootstrap-datepicker.js",
+    "/js/app.min.js": "/js/app.min.js",
+    "/js/bootstrap.min.js": "/js/bootstrap.min.js",
+    "/css/all.css": "/css/all.css"
+}

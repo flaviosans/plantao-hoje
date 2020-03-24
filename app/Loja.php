@@ -8,9 +8,10 @@ class Loja extends Model
 {
     protected $fillable = ['nome'];
     protected $guarded = ['id', 'created_at', 'updated_at'];
+    
     public function endereco()
     {
-        return $this->hasMany('\App\Endereco');
+        return $this->morphMany('\App\Endereco', 'enderecavel');
     }
 
     public function imagem(){
@@ -29,7 +30,7 @@ class Loja extends Model
         return $this->belongsTo('\App\User');
     }
 
-    public function oferta(){
-        return $this->hasManyThrough('\App\Oferta', '\App\Campanha');
+    public function item(){
+        return $this->hasManyThrough('\App\Item', '\App\Cotacao');
     }
 }

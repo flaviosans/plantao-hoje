@@ -14,25 +14,30 @@
 Route::get('/', 'FrontController@index')->name('index');
 Route::get('/busca', 'FrontController@busca')->name('busca');
 
-Route::get('/ofertas/', 'FrontController@ofertas')->name('ofertas');
+Route::get('/itens/', 'FrontController@itens')->name('itens');
 
 Auth::routes();
 
-Route::group(['prefix'=>'admin', 'middleware'=> ['auth','checalojaselecionada']], function (){
-    Route::get('/', 'HomeController@index');
+Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function (){
+    Route::get('/', 'HomeController@dashboard');
     Route::get('dashboard', 'HomeController@dashboard')->name('home.dashboard');
     Route::get('profile', 'HomeController@profile');
-    Route::resource('banners', 'BannerController');
-    Route::resource('campanhas', 'CampanhaController');
-    Route::resource('lojas', 'LojaController');
-    Route::resource('campanhas.ofertas', 'OfertaController');
-    Route::resource('ofertas', 'OfertaController');
+    Route::get('cotacoes/enviadas', 'CotacaoController@enviadas')->name('cotacoes.enviadas');
+    Route::get('cotacoes/recebidas', 'CotacaoController@recebidas')->name('cotacoes.recebidas');
+    Route::get('cotacoes/publicadas', 'CotacaoController@publicadas')->name('cotacoes.publicadas');
+    Route::get('cotacoes/{id}/respostas', 'CotacaoController@respostas')->name('cotacoes.respostas');
+    Route::post('cotacoes/{id}/publicar', 'CotacaoController@publicar')->name('cotacoes.publicar');
+    Route::get('cotacoes/{id}/responder', 'CotacaoController@responder')->name('cotacoes.responder');
+//    Route::resource('banners', 'BannerController');
+    Route::resource('cotacoes', 'CotacaoController');
+//    Route::resource('lojas', 'LojaController');
+    Route::resource('cotacoes.itens', 'ItemController');
+    Route::resource('itens', 'ItemController');
     Route::resource('produtos', 'ProdutoController');
-    route::resource('tags','TagController');
-    route::resource('marcas', 'MarcaController');
-    route::resource('tokens', 'TokenController');
-    Route::get('/session/setloja/{id}','HomeController@setloja')->name('setLoja');
+//    route::resource('tags','TagController');
+//    route::resource('marcas', 'MarcaController');
+//    route::resource('tokens', 'TokenController');
+//    Route::get('/session/setloja/{id}','HomeController@setloja')->name('setLoja');
     Route::resource('categorias', 'CategoriaController');
-    Route::get('/teste/{barras}'  , 'HomeController@teste');
-
+    Route::resource('enderecos', 'EnderecoController');
 });

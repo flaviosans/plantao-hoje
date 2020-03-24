@@ -6,7 +6,6 @@ use App\Banner;
 use App\Imagem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Library\Message;
 
 class BannerController extends Controller
 {
@@ -59,7 +58,7 @@ class BannerController extends Controller
     public function show($id)
     {
         //
-    } 
+    }
 
     /**
      * Show the form for editing the specified resource.

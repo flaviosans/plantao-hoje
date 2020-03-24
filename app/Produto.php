@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Produto extends Model
 {
-    protected $fillable = ['nome', 'codigo_barras', 'marca_id', 'loja_id'];
+    protected $fillable = ['nome', 'codigo_barras', 'marca_id', 'loja_id', 'medida_id'];
     protected $guarded = ['id', 'updated_at', 'created_at'];
     protected $appends = ['tags', 'text'];
     protected $hidden = ['created_at', 'updated_at', 'marca_id', 'loja_id'];
     
-    public function getQuantasOfertasAttribute(){
-        return $this->oferta->count();
+    public function getQuantasItensAttribute(){
+        return $this->item->count();
     }
 
     public function possui($categoria){
@@ -36,8 +36,8 @@ class Produto extends Model
         return $this->belongsTo('\App\Marca');
     }
 
-    public function oferta(){
-        return $this->hasMany('\App\Oferta');
+    public function item(){
+        return $this->hasMany('\App\Item');
     }
 
     public function tag(){
@@ -46,6 +46,10 @@ class Produto extends Model
 
     public function token(){
         return $this->morphToMany('\App\Token', 'tokenable');
+    }
+
+    public function medida(){
+        return $this->belongsTo('\App\Medida');
     }
 
     public function getTagsAttribute(){

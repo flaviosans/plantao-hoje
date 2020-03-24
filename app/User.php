@@ -27,8 +27,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function endereco(){
-        return $this->hasMany('\App\Endereco');
+    public function endereco()
+    {
+        return $this->morphMany('\App\Endereco', 'enderecavel');
     }
 
     public function loja(){

@@ -1,8 +1,4 @@
 <!DOCTYPE html>
-<!--
-This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
--->
 <html>
 <head>
     <meta charset="utf-8">
@@ -11,53 +7,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- DatePicker -->
-
-    <!-- Bootstrap 3.3.6 -->
-    <link rel="stylesheet" href="/bower_components/adminLTE/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="/bower_components/adminLTE/dist/css/AdminLTE.min.css">
-    <!-- Select2 -->
-
-    <link rel="stylesheet" href="/bower_components/adminLTE/plugins/select2/select2.min.css">
-    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
-          page. However, you can choose any other skin. Make sure you
-          apply the skin class to the body tag so the changes take effect.
-    -->
-    <link rel="stylesheet" href="/bower_components/adminLTE/dist/css/skins/skin-green.min.css">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('css/all.css')}}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
 
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="{{asset('html5shiv.min.js')}}"></script>
+    <script src="{{asset('respond.min.js')}}"></script>
     <![endif]-->
 
 </head>
-<!--
-BODY TAG OPTIONS:
-=================
-Apply one or more of the following classes to get the
-desired effect
-|---------------------------------------------------------|
-| SKINS         | skin-blue                               |
-|               | skin-black                              |
-|               | skin-purple                             |
-|               | skin-yellow                             |
-|               | skin-red                                |
-|               | skin-green                              |
-|---------------------------------------------------------|
-|LAYOUT OPTIONS | fixed                                   |
-|               | layout-boxed                            |
-|               | layout-top-nav                          |
-|               | sidebar-collapse                        |
-|               | sidebar-mini                            |
-|---------------------------------------------------------|
--->
+
 <body class="hold-transition skin-green sidebar-mini sidebar-collapse">
 <div class="wrapper">
 
@@ -99,7 +61,7 @@ desired effect
                                         <a href="#">
                                             <div class="pull-left">
                                                 <!-- User Image -->
-                                                <img src="/bower_components/adminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                <img src="{{asset('/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
                                             </div>
                                             <!-- Message title and timestamp -->
                                             <h4>
@@ -183,14 +145,14 @@ desired effect
                         <!-- Menu Toggle Button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <!-- The user image in the navbar-->
-                            <img src="/bower_components/adminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
                             <span class="hidden-xs">{{Auth::user()->name}}</span>
                         </a>
                         <ul class="dropdown-menu">
                             <!-- The user image in the menu -->
                             <li class="user-header">
-                                <img src="/bower_components/adminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                                 <p>
                                     {{Auth::user()->name}}
@@ -253,13 +215,11 @@ desired effect
                     <a href="{{asset('/')}}" target="_blank"><i class="fa fa-globe"></i> <span>Visitar Site</span></a>
                 </li>
                 <li><a href="{{route('home.dashboard')}}"><i class="fa fa-home"></i> <span>Painel de controle</span></a></li>
-                <li><a href="{{route('campanhas.index')}}"><i class="fa fa-bar-chart"></i> <span>Campanhas & Ofertas</span></a></li>
-                <li><a href="{{route('banners.index')}}"><i class="fa fa-image"></i> <span>Banners</span></a></li>
+                <li><a href="{{route('cotacoes.enviadas')}}"><i class="fa fa-arrow-up"></i> <span>Cotações enviadas</span></a></li>
+                <li><a href="{{route('cotacoes.recebidas')}}"><i class="fa fa-arrow-down"></i> <span>Cotações recebidas</span></a></li>
+                <li><a href="{{route('cotacoes.publicadas')}}"><i class="fa fa-arrow-down"></i> <span>Cotações de clientes</span></a></li>
                 <li><a href="{{route('produtos.index')}}"><i class="fa fa-shopping-cart"></i> <span>Produtos</span></a></li>
                 <li><a href="{{route('categorias.index')}}"><i class="fa fa-list"></i> <span>Categorias</span></a></li>
-                <li><a href="{{route('marcas.index')}}"><i class="fa fa-institution"></i> <span>Marcas</span></a></li>
-                <li><a href="{{route('lojas.index')}}"><i class="fa fa-dollar"></i> <span>Lojas</span></a></li-->
-                <li><a href="{{route('tags.index')}}"><i class="fa fa-tag"></i> <span>Tags</span></a></li>
 
             </ul>
             <!-- /.sidebar-menu -->
@@ -401,21 +361,20 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="/bower_components/adminLTE/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/jquery-2.2.3.min.js')}}"></script>
+<script src="{{asset('/js/select2.min.js')}}"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="/bower_components/adminLTE/bootstrap/js/bootstrap.min.js"></script>
+<script src="{{asset('/js/bootstrap.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="/bower_components/adminLTE/dist/js/app.min.js"></script>
+<script src="{{asset('/js/app.min.js')}}"></script>
 <!-- DatePicker -->
-<script src="/bower_components/adminLTE/plugins/datepicker/bootstrap-datepicker.js"></script>
-<script src="/bower_components/adminLTE/plugins/datepicker/locales/bootstrap-datepicker.pt-BR.js"></script>
+<script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
+<script src="{{asset('/js/bootstrap-datepicker.pt-BR.js')}}"></script>
 <!-- InputMask -->
-<script src="/bower_components/adminLTE/plugins/input-mask/jquery.inputmask.js"></script>
-<script src="/bower_components/adminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="/bower_components/adminLTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<script src="/bower_components/adminLTE/plugins/select2/select2.full.min.js"></script>
-
-
+<script src="{{asset('/js/jquery.inputmask.js')}}"></script>
+<script src="{{asset('/js/jquery.inputmask.date.extensions.js')}}"></script>
+<script src="{{asset('/js/jquery.inputmask.extensions.js')}}"></script>
 <script>
     $('select').select2();
     $(function () {

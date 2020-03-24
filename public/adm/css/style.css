@@ -31,9 +31,8 @@ img{max-width:100%;}
 
 
 body {
-    font-family: 'Cormorant Unicase', serif;
     background-attachment: fixed;
-    background: url(../images/3.jpg) no-repeat 0px 0px;
+    background: #1a2537;
     background-size: cover;
 }
 h1 {

@@ -14,16 +14,16 @@
                 Ver Produtos
             @endslot
             @slot('box2_titulo')
-                {{\App\Oferta::all()->count()}}
+                {{$cotacoes_clientes}}
             @endslot
             @slot('box2_descricao')
-            Ofertas Cadastradas
+            Cotações de clientes
             @endslot
             @slot('box2_link')
-                {{route('ofertas.index')}}
+                {{route('cotacoes.recebidas')}}
             @endslot
             @slot('box2_texto')
-                Pesquisa Google
+                Ver cotações de clientes
             @endslot
             @slot('box3_titulo')
                 {{$numLojas = Auth::user()->loja()->count()}}
@@ -32,7 +32,7 @@
             {{ $numLojas > 1 ? 'Lojas' : 'Loja' }}
             @endslot
             @slot('box3_link')
-                {{route('lojas.index')}}
+               #
             @endslot
             @slot('box3_texto')
                 Gerenciar Lojas
@@ -73,82 +73,16 @@
                 Rodape
             @endslot
     @endcomponent
-    @component('comp.box')
-            @slot('cabecalho')
-                Correto
-            @endslot
-            @slot('conteudo')
-            Esse Box deu certo!
-            @endslot
-            @slot('rodape')
-                Rodape
-            @endslot
-    @endcomponent
-    @component('comp.box')
-            @slot('cabecalho')
-                Correto
-            @endslot
-            @slot('conteudo')
-            Esse Box deu certo!
-            @endslot
-            @slot('rodape')
-                Rodape
-            @endslot
-    @endcomponent
-    @component('comp.box')
-            @slot('cabecalho')
-                Correto
-            @endslot
-            @slot('conteudo')
-            Esse Box deu certo!
-            @endslot
-            @slot('rodape')
-                Rodape
-            @endslot
-    @endcomponent
-    @component('comp.box')
-            @slot('cabecalho')
-                Correto
-            @endslot
-            @slot('conteudo')
-            Esse Box deu certo!
-            @endslot
-            @slot('rodape')
-                Rodape
-            @endslot
-    @endcomponent
-    @component('comp.box')
-            @slot('cabecalho')
-                Correto
-            @endslot
-            @slot('conteudo')
-            Esse Box deu certo!
-            @endslot
-            @slot('rodape')
-                Rodape
-            @endslot
-    @endcomponent
-    @component('comp.box')
-            @slot('cabecalho')
-                Correto
-            @endslot
-            @slot('conteudo')
-            Esse Box deu certo!
-            @endslot
-            @slot('rodape')
-                Rodape
-            @endslot
-    @endcomponent
-    @component('comp.box')
-            @slot('cabecalho')
-                Correto
-            @endslot
-            @slot('conteudo')
-            Esse Box deu certo!
-            @endslot
-            @slot('rodape')
-                Rodape
-            @endslot
-    @endcomponent
 
+    @component('comp.box')
+            @slot('cabecalho')
+                Correto
+            @endslot
+            @slot('conteudo')
+            Esse Box deu certo!
+            @endslot
+            @slot('rodape')
+                Rodape
+            @endslot
+    @endcomponent
 @endsection

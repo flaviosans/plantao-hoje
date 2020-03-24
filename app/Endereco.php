@@ -6,7 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Endereco extends Model
 {
-    public function loja(){
-        return $this->belongsTo('\App\Loja');
+    protected $fillable = [
+        'logradouro',
+        'bairro',
+        'cep_id'
+    ];
+    
+    public function enderecavel(){
+        return $this->morphTo();
     }
 }
