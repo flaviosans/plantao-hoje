@@ -5,7 +5,7 @@
     <ul id="demo1">
         @foreach($bannerTopo as $banner)
             <li>
-            <img src="{{$banner->imagem()->first()->caminho}}" alt=""/>
+            <img src="{{$banner->imagem()->first()->caminho or ''}}" alt=""/>
             <!--Slider Description example-->
             <div class="slide-desc">
                 <h3>{{$banner->texto}}</h3>

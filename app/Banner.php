@@ -10,7 +10,7 @@ class Banner extends Model
 
     protected $fillable = ['nome', 'texto', 'tipo', 'link', 'user_id'];
     protected $guarded = ['id'];
-    protected $dates = ['deleted_at'];
+    protected $dates = ['created_at', 'modified_at', 'deleted_at'];
 
     use SoftDeletes;
     public function imagem(){
