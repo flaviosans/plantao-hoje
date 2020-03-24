@@ -18,7 +18,7 @@ Route::get('/ofertas/', 'FrontController@ofertas')->name('ofertas');
 
 Auth::routes();
 
-Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function (){
+Route::group(['prefix'=>'admin', 'middleware'=> ['auth','checalojaselecionada']], function (){
     Route::get('/', 'HomeController@index');
     Route::get('dashboard', 'HomeController@dashboard')->name('home.dashboard');
     Route::get('profile', 'HomeController@profile');
