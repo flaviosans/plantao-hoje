@@ -104,16 +104,22 @@ class MarcaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy($id)
     {
-        $marca = Marca::findOrFail($id);
+        $marca = (new \App\Marca)->findOrFail($id);
 
-        $marca->delete();
+        if($marca->produto()->count() == 0){
+            $marca->delete();
+            Message::info('Marca ' . $marca->nome . ' apagada com sucesso!');
+        } else{
+            Message::warning('A marca ' . $marca->nome . ' tem produtos! 
+            Apague os produtos ou selecione para eles outra marca.');
+        }
 
-        Message::info('Marca ' . $marca->nome . ' apagada com sucesso!');
         return redirect()->route('marcas.index');
     }
 }
