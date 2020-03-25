@@ -15,8 +15,13 @@ use App\Produto;
 
 class Scrapper
 {
-    public static function buscarProduto($codigo_barras){
+    public static function scrap($codigo_barras){
         $xpath = self::getDomXPath('https://cosmos.bluesoft.com.br/produtos/' . $codigo_barras);
+
+        return self::buscarProduto($xpath);
+    }
+
+    private static function buscarProduto($xpath){
         $node_nome = $xpath->query("//h1[@class='page-header']/text()");
 
         $produto = new Produto();
@@ -26,12 +31,15 @@ class Scrapper
 
         return $produto;
     }
-
     public static function getDomXPath($filename){
         libxml_use_internal_errors(true);
         $dom = new \DOMDocument();
         $dom->loadHTMLFile($filename);
         libxml_use_internal_errors(false);
         return new \DOMXPath($dom);
+    }
+
+    public static function buscarMarca(){
+
     }
 }

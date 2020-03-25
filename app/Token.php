@@ -15,4 +15,8 @@ class Token extends Model
     public function produto(){
         return $this->morphedByMany('\App\Produto', 'tokenable');
     }
+
+    public function marca(){
+        return $this->morphedByMany('\App\Marca', 'tokenable');
+    }
 }

@@ -70,7 +70,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="container">
         <div class="w3ls_logo_products_left1">
             <ul class="phone_email">
-                <li><i class="fa fa-phone" aria-hidden="true"></i>Order online or call us : (+0123) 234 567</li>
+                <li><i class="fa " aria-hidden="true"></i>Compre sem sair de casa!</li>
 
             </ul>
         </div>
@@ -158,13 +158,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 </ul>
             </div>
             <div class="col-md-3 w3_footer_grid">
-                <h3>Category</h3>
+                <h3>Categorias</h3>
                 <ul class="info">
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="groceries.html">Groceries</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="household.html">Household</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="personalcare.html">Personal Care</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="packagedfoods.html">Packaged Foods</a></li>
-                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="beverages.html">Beverages</a></li>
+                    @foreach(\App\Categoria::where('pai', '0')->get() as $pai)
+                    <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="groceries.html">{{$pai->nome}}</a></li>
+                    @endforeach
+
                 </ul>
             </div>
             <div class="col-md-3 w3_footer_grid">

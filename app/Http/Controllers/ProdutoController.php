@@ -54,7 +54,7 @@ class ProdutoController extends Controller
     public function store(ProdutoRequest $request)
     {
         if(preg_match("/[0-9]{13}/",$request->nome)){
-            $produto = Scrapper::buscarProduto($request->nome);
+            $produto = Scrapper::scrap($request->nome);
         }
         else {
             $produto = new Produto();
