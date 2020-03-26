@@ -54,20 +54,21 @@ class ProdutoController extends Controller
     public function store(ProdutoRequest $request)
     {
         if(preg_match("/[0-9]{13}/",$request->nome)){
-            $produto = Scrapper::buscarProduto($request->nome);
+            $produto = Scrapper::scrap($request->nome);
         }
         else {
             $produto = new Produto();
             $produto->fill($request->all());
             isset($request->proprio) ? $produto->loja_id = $request->proprio : '';
             $produto->save();
+            Message::info("Produto Salvo Com Sucesso!");
         }
 
         isset($request->imagem) ? $produto->salvarImagem($request->imagem) : '';
         isset($request->categorias) ? $produto->salvarCategorias($request->categorias) : '';
         isset($request->tags) ? $produto->criarTags($request->tag) : '';
 
-        Message::info("Produto Salvo Com Sucesso!");
+
 
         return redirect()->route('produtos.index');
     }

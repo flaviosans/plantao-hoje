@@ -18,7 +18,7 @@
     <!-- top-brands -->
     <div class="top-brands">
         <div class="container">
-            <h2>Top selling offers</h2>
+            <h2>As melhores ofertas aqui!</h2>
             <div class="grid_3 grid_5">
                 <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
                     <ul id="myTab" class="nav nav-tabs" role="tablist">
@@ -151,7 +151,7 @@
                                     <div class="hover14 column">
                                         <div class="agile_top_brand_left_grid">
                                             <div class="agile_top_brand_left_grid_pos">
-                                                <img src="/images/offer.png" alt=" " class="img-responsive" />
+                                                <!-- <img src="/images/offer.png" alt=" " class="img-responsive" /> -->
                                             </div>
                                             <div class="agile_top_brand_left_grid1">
                                                 <figure>

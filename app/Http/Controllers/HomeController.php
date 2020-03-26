@@ -40,10 +40,4 @@ class HomeController extends Controller
         session()->put('loja', $id);
         return redirect()->back();
     }
-
-    public function teste($barras){
-        Scrapper::buscarProduto($barras);
-        return redirect()->route('produtos.index');
-
-    }
 }

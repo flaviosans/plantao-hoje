@@ -22,7 +22,9 @@ class FrontController extends Controller
     }
 
     public function busca(Request $request){
-        $produto = Produto::where('nome', 'like', '%' . $request->termo . '%')->pluck('id')->toArray();
+        $produto = Produto::where('nome', 'like', '%' . $request->q . '%')
+            ->pluck('id')->toArray();
+
         $dados = [
             'ofertas'=> Oferta::whereIn('produto_id', $produto)->get()
         ];

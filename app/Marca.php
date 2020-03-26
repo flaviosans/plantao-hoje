@@ -14,10 +14,15 @@ class Marca extends Model
     public function imagem(){
         return $this->morphMany('\App\Imagem', 'dono');
     }
-
+    
     public function produto(){
         return $this->hasMany('\App\Produto');
     }
+    
+    public function token(){
+        return $this->morphMany('\App\Token', 'tokenable');
+    }
+    
 
     protected static function boot(){
         parent::boot();
