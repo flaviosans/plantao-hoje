@@ -27,8 +27,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 	<!-- main -->
 	<div class="main agileits-w3layouts">
-		<h1>Bem Vindo ao Painel Administrativo!</h1>
-		<div class="main-agileinfo"> 
+		<h3>Bem Vindo ao Painel Administrativo!</h3>
+		<div class="main-agileinfo">
 			<div class="agileui-forms">
 				<div class="container-form">
 					<div class="form-item log-in"><!-- login form-->
@@ -61,7 +61,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 										<a href="{{ route('password.request') }}">Esqueceu a senha?</a>
 										<input type="submit" value="Entrar">
 									</div>
-									<div class="social-grids">
+{{--									<div class="social-grids">
 										<div class="social-text">
 											<p>Or Sign in with</p>
 										</div>
@@ -73,7 +73,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 											</ul>
 										</div>
 										<div class="clear"> </div>
-									</div>
+									</div>--}}
 
 								</form>  
 							</div>
@@ -119,7 +119,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</div>
 									<input type="submit" value="Sign up">
 								</form>
-
 							</div>
 						</div>
 					</div>
@@ -142,18 +141,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 						</div>
 					</div>
 					<div class="clear"> </div>
-				</div> 
-				
-				
+				</div>
 			</div> 
 		</div>	
 	</div>   
 	<!-- //main -->
-	<!-- copyright -->
-	<div class="copyw3-agile">
-		<p> © 2017 Smooth Sliding Forms . All rights reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts.</a></p>
-	</div>
-	<!-- //copyright --> 
+
 	<!-- js -->  
 	<script  src=" adm/js/jquery-1.12.3.min.js"></script> 
 	<script>

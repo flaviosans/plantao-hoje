@@ -1,18 +1,11 @@
-<!--
-author: W3layouts
-author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Super Market an Ecommerce Online Shopping Category Flat Bootstrap Responsive Website Template | Home :: w3layouts</title>
+    <title>Cotação de preços!</title>
     <!-- for-mobile-apps -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Super Market Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <meta name="keywords" content="key, words" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
         function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!-- //for-mobile-apps -->
@@ -21,6 +14,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- font-awesome icons -->
     <link href="/css/font-awesome.css" rel="stylesheet">
     <!-- //font-awesome icons -->
+    <!-- BRCart -->
+    <link href="/css/brcart.css" rel="stylesheet">
+    <!-- //BRCart -->
     <!-- js -->
     <script src="/js/jquery-1.11.1.min.js"></script>
     <!-- //js -->
@@ -56,6 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </ul>
         </div>
         <div class="product_list_header">
+
             <form action="#" method="post" class="last">
                 <input type="hidden" name="cmd" value="_cart">
                 <input type="hidden" name="display" value="1">
@@ -75,11 +72,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </ul>
         </div>
         <div class="w3ls_logo_products_left">
-            <h1><a href="index.html">Bora Mercado</a></h1>
+            <h1><a href="{{asset('/')}}">SOS Mercado</a></h1>
         </div>
         <div class="w3l_search">
             <form action="{{route('busca')}}" method="get">
-                <input type="search" name="termo" placeholder="Buscar produto/oferta..." required="">
+                <input type="search" name="q" placeholder="Buscar produto/oferta..." required="">
                 <button type="submit" class="btn btn-default search" aria-label="Left Align">
                     <i class="fa fa-search" aria-hidden="true"> </i>
                 </button>
@@ -106,7 +103,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
             <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.html" class="act">Home</a></li>
+                    <li class="active"><a href="{{asset('/')}}" class="act">Home</a></li>
                     <!-- Mega Menu -->
                     @foreach(\App\Categoria::where('pai', '0')->get() as $pai)
                     <li class="dropdown">
@@ -182,7 +179,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="footer-copy">
 
         <div class="container">
-            <p>© {{date('Y')}} Bora Mercado. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
+            <p>© {{date('Y')}} SOS Mercado. All rights reserved | Design by <a href="http://w3layouts.com/">W3layouts</a></p>
         </div>
     </div>
 
@@ -225,17 +222,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     });
 </script>
 <!-- //here ends scrolling icon -->
-<script src="/js/minicart.min.js"></script>
-<script>
-    // Mini Cart
-    paypal.minicart.render({
-        action: '#'
-    });
-
-    if (~window.location.search.indexOf('reset=true')) {
-        paypal.minicart.reset();
-    }
-</script>
+<script src="/js/brcart.js"></script>
 <!-- main slider-banner -->
 <script src="/js/skdslider.min.js"></script>
 <link href="css/skdslider.css" rel="stylesheet">

@@ -15,6 +15,7 @@ Route::get('/', 'FrontController@index')->name('index');
 Route::get('/busca', 'FrontController@busca')->name('busca');
 
 Route::get('/ofertas/', 'FrontController@ofertas')->name('ofertas');
+Route::get('/checkout/', 'FrontController@checkout')->name('checkout');
 
 Auth::routes();
 

@@ -32,6 +32,10 @@ class FrontController extends Controller
         return view('front.ofertas', $dados);
     }
 
+    public function checkout(Request $request){
+        return view('front.checkout');
+    }
+
     public function ofertas(){
         $dados = [
             'ofertas'=> Oferta::all()
