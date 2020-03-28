@@ -31,62 +31,8 @@
                                 <h5>Em destaque:</h5>
                                 <p class="w3l-ad">Produtos que foram destaque essa semana, colocamos aqui! Pesquise, compare e boas compras!!</p>
                             </div>
-                                @foreach($ofertas as $oferta)
-                                @if($loop->index % 3 == 0)
-                                    <div class="agile_top_brands_grids">
-                                @endif
-                                <div class="col-md-4 top_brand_left">
-                                    <div class="hover14 column">
-                                        <div class="agile_top_brand_left_grid">
-                                            <div class="agile_top_brand_left_grid_pos">
-                                                <img src="images/offer.png" alt=" " class="img-responsive" />
-                                            </div>
-                                            <div class="agile_top_brand_left_grid1">
-                                                <figure>
-                                                    <div class="snipcart-item block" >
-                                                        <div class="snipcart-thumb">
-                                                            <a href="products.html">
-                                                                @if($oferta->produto->imagem()->first() != null)
-                                                                    <img src="{{$oferta->produto->imagem()->first()->caminho}}" alt="" width="150" height="150">
-                                                                @endif
-                                                            </a>
-                                                            <p>{{$oferta->produto->nome}}</p>
-                                                            <div class="stars">
-                                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                <i class="fa fa-star gray-star" aria-hidden="true"></i>
-                                                            </div>
-                                                            <h4>{{$oferta->preco_promocao}} <span>{{$oferta->preco_normal}}</span></h4>
-                                                        </div>
-                                                        <div class="snipcart-details top_brand_home_details">
-                                                            <form action="#" method="post">
-                                                                <fieldset>
-                                                                    <input type="hidden" name="cmd" value="_cart" />
-                                                                    <input type="hidden" name="add" value="1" />
-                                                                    <input type="hidden" name="business" value=" " />
-                                                                    <input type="hidden" name="item_name" value="{{$oferta->produto->nome}}" />
-                                                                    <input type="hidden" name="amount" value="{{$oferta->preco_normal}}" />
-                                                                    <input type="hidden" name="discount_amount" value="0.0" />
-                                                                    <input type="hidden" name="currency_code" value="USD" />
-                                                                    <input type="hidden" name="return" value=" " />
-                                                                    <input type="hidden" name="cancel_return" value=" " />
-                                                                    <input type="submit" name="submit" value="Add to cart" class="button" />
-                                                                </fieldset>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </figure>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                @if($loop->index % 3 == 2)
-                                        <div class="clearfix"> </div>
-                                </div>
-                                @endif
-                                @endforeach
+                            @component('front.comp.lista-ofertas', ['ofertas' => $ofertas])
+                            @endcomponent
 
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="tours" aria-labelledby="tours-tab">
@@ -94,63 +40,8 @@
                                 <h5>Nossas ofertas pra você</h5>
                                 <p class="w3l-ad">Essas ofertas acabaram de chegar no nosso site! Legal, não?</p>
                             </div>
-                                @foreach($ofertas as $oferta)
-                                @if($loop->index % 3 == 0)
-                                <div class="agile_top_brands_grids">
-                                @endif
-                                        <div class="col-md-4 top_brand_left">
-                                            <div class="hover14 column">
-                                                <div class="agile_top_brand_left_grid">
-                                                    <div class="agile_top_brand_left_grid_pos">
-                                                        <img src="images/offer.png" alt=" " class="img-responsive" />
-                                                    </div>
-                                                    <div class="agile_top_brand_left_grid1">
-                                                        <figure>
-                                                            <div class="snipcart-item block" >
-                                                                <div class="snipcart-thumb">
-                                                                    <a href="products.html">
-                                                                        @if($oferta->produto->imagem()->first() != null)
-                                                                            <img src="{{$oferta->produto->imagem()->first()->caminho}}" alt="" width="150" height="150">
-                                                                        @endif
-                                                                    </a>
-                                                                    <p>{{$oferta->produto->nome}}</p>
-                                                                    <div class="stars">
-                                                                        <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                        <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                        <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                        <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                                        <i class="fa fa-star gray-star" aria-hidden="true"></i>
-                                                                    </div>
-                                                                    <h4>{{$oferta->preco_promocao}} <span>{{$oferta->preco_normal}}</span></h4>
-                                                                </div>
-                                                                <div class="snipcart-details top_brand_home_details">
-                                                                    <form action="#" method="post">
-                                                                        <fieldset>
-                                                                            <input type="hidden" name="cmd" value="_cart" />
-                                                                            <input type="hidden" name="add" value="1" />
-                                                                            <input type="hidden" name="business" value=" " />
-                                                                            <input type="hidden" name="item_name" value="{{$oferta->produto->nome}}" />
-                                                                            <input type="hidden" name="amount" value="{{$oferta->preco_normal}}" />
-                                                                            <input type="hidden" name="discount_amount" value="0.0" />
-                                                                            <input type="hidden" name="currency_code" value="USD" />
-                                                                            <input type="hidden" name="return" value=" " />
-                                                                            <input type="hidden" name="cancel_return" value=" " />
-                                                                            <input type="submit" name="submit" value="Add to cart" class="button" />
-                                                                        </fieldset>
-                                                                    </form>
-                                                                </div>
-                                                            </div>
-                                                        </figure>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                @if($loop->index % 3 == 2)
-                                        <div class="clearfix"> </div>
-                                </div>
-                                @endif
-
-                                @endforeach
+                            @component('front.comp.lista-ofertas', ['ofertas' => $ofertas])
+                            @endcomponent
                         </div>
                     </div>
                 </div>
@@ -202,62 +93,8 @@
     <div class="newproducts-w3agile">
         <div class="container">
             <h3>Últimas Ofertas Cadastradas:</h3>
-                @foreach($ofertas as $oferta)
-                @if($loop->index % 3 == 0)
-                    <div class="agile_top_brands_grids">
-                @endif
-                    <div class="col-md-4 top_brand_left">
-                        <div class="hover14 column">
-                            <div class="agile_top_brand_left_grid">
-                                <div class="agile_top_brand_left_grid_pos">
-                                    <img src="images/offer.png" alt=" " class="img-responsive" />
-                                </div>
-                                <div class="agile_top_brand_left_grid1">
-                                    <figure>
-                                        <div class="snipcart-item block" >
-                                            <div class="snipcart-thumb">
-                                                <a href="products.html">
-                                                    @if($oferta->produto->imagem()->first() != null)
-                                                        <img src="{{$oferta->produto->imagem()->first()->caminho}}" alt="" width="150" height="150">
-                                                    @endif
-                                                </a>
-                                                <p>{{$oferta->produto->nome}}</p>
-                                                <div class="stars">
-                                                    <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star gray-star" aria-hidden="true"></i>
-                                                </div>
-                                                <h4>{{$oferta->preco_promocao}} <span>{{$oferta->preco_normal}}</span></h4>
-                                            </div>
-                                            <div class="snipcart-details top_brand_home_details">
-                                                <form action="#" method="post">
-                                                    <fieldset>
-                                                        <input type="hidden" name="cmd" value="_cart" />
-                                                        <input type="hidden" name="add" value="1" />
-                                                        <input type="hidden" name="business" value=" " />
-                                                        <input type="hidden" name="item_name" value="{{$oferta->produto->nome}}" />
-                                                        <input type="hidden" name="amount" value="{{$oferta->preco_normal}}" />
-                                                        <input type="hidden" name="discount_amount" value="0.0" />
-                                                        <input type="hidden" name="currency_code" value="USD" />
-                                                        <input type="hidden" name="return" value=" " />
-                                                        <input type="hidden" name="cancel_return" value=" " />
-                                                        <input type="submit" name="submit" value="Add to cart" class="button" />
-                                                    </fieldset>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @if($loop->index % 3 == 2)
-                        <div class="clearfix"> </div>
-            </div>
-                    @endif
-                @endforeach
+            @component('front.comp.lista-ofertas', ['ofertas' => $ofertas])
+            @endcomponent
         </div>
     </div>
     <!-- //new -->
