@@ -41,55 +41,12 @@
                         <div class="clearfix"> </div>
                     </div>
                 </div>
-                <div class="agile_top_brands_grids">
-                @foreach($ofertas as $oferta)
-                    <div class="col-md-4 top_brand_left">
-                        <div class="hover14 column">
-                            <div class="agile_top_brand_left_grid">
-                                <div class="agile_top_brand_left_grid_pos">
-                                    <img src="images/offer.png" alt=" " class="img-responsive">
-                                </div>
-                                <div class="agile_top_brand_left_grid1">
-                                    <figure>
-                                        <div class="snipcart-item block">
-                                            <div class="snipcart-thumb">
-                                                <a href="single.html">
-                                                    @if($oferta->produto->imagem()->first() != null)
-                                                        <img class="img-responsive" src="{{$oferta->produto->imagem()->first()->caminho or ''}}" alt="" width="150" height="150">
-                                                    @endif
-                                                </a>
-                                                <p>{{$oferta->produto->nome}}</p>
-                                                <h4>R$ {{$oferta->preco_promocao}} <span>R$ {{$oferta->preco_normal}}</span></h4>
-                                            </div>
-                                            <div class="snipcart-details top_brand_home_details">
-                                                <form action="#" method="post">
-                                                    <fieldset>
-                                                        <input type="hidden" name="cmd" value="_cart">
-                                                        <input type="hidden" name="add" value="1">
-                                                        <input type="hidden" name="business" value=" ">
-                                                        <input type="hidden" name="item_name" value="{{$oferta->produto->nome}}">
-                                                        <input type="hidden" name="amount" value="{{$oferta->preco_promocao_raw}}">
-                                                        <input type="hidden" name="discount_amount" value="0">
-                                                        <input type="hidden" name="currency_code" value="USD">
-                                                        <input type="hidden" name="return" value=" ">
-                                                        <input type="hidden" name="cancel_return" value=" ">
-                                                        <input type="submit" name="submit" value="Add to cart" class="button">
-                                                    </fieldset>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </figure>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @if($loop->iteration % 3  == 0 || $loop->last)
-                        <div class="clearfix"> </div>
-                        </div>
-                        <div class="agile_top_brands_grids">
-                    @endif
-                @endforeach
-                <nav class="numbering">
+                <div>
+                @component('front.comp.lista-ofertas', ['ofertas' => $ofertas])
+                @endcomponent
+                </div>
+                <div class="container">
+                    <nav class="numbering">
                     <ul class="pagination paging">
                         <li>
                             <a href="#" aria-label="Previous">
@@ -108,6 +65,7 @@
                         </li>
                     </ul>
                 </nav>
+                </div>
             </div>
             <div class="clearfix"> </div>
         </div>
