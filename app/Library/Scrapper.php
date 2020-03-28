@@ -24,7 +24,7 @@ class Scrapper
             return;
         }
         $xpath = self::getDomXPath('https://cosmos.bluesoft.com.br/produtos/' . $codigo_barras);
-        self::buscarImagem($xpath);
+
         return self::buscarProduto($xpath, $codigo_barras);
 
     }
