@@ -7,19 +7,53 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- DatePicker -->
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('css/all.css')}}">
+
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="/bower_components/adminLTE/bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="/bower_components/adminLTE/dist/css/AdminLTE.min.css">
+    <!-- Select2 -->
+
+    <link rel="stylesheet" href="/bower_components/adminLTE/plugins/select2/select2.min.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link rel="stylesheet" href="/bower_components/adminLTE/dist/css/skins/skin-green.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
 
-    <script src="{{asset('html5shiv.min.js')}}"></script>
-    <script src="{{asset('respond.min.js')}}"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
 </head>
-
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
 <body class="hold-transition skin-green sidebar-mini sidebar-collapse">
 <div class="wrapper">
 
@@ -28,178 +62,178 @@
 
         <!-- Logo -->
         <a href="/admin/dashboard/" class="logo" style="position: fixed">
-        <a href="/admin/dashboard/" class="logo" style="position: fixed">
-            <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>A</b>DM</span>
-            <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Administração</b></span>
-        </a>
-
-        <!-- Header Navbar -->
-        <nav class="navbar navbar-static-top" role="navigation">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                <span class="sr-only">Toggle navigation</span>
+            <a href="/admin/dashboard/" class="logo" style="position: fixed">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>A</b>DM</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Administração</b></span>
             </a>
-            <!-- Navbar Right Menu -->
-            <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
 
-                    <!-- Messages: style can be found in dropdown.less-->
-                    <li class="dropdown messages-menu">
-                        <!-- Menu toggle button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success">4</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 4 messages</li>
-                            <li>
-                                <!-- inner menu: contains the messages -->
-                                <ul class="menu">
-                                    <li><!-- start message -->
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <!-- User Image -->
-                                                <img src="{{asset('/dist/img/user2-160x160.jpg')}}" class="img-circle" alt="User Image">
-                                            </div>
-                                            <!-- Message title and timestamp -->
-                                            <h4>
-                                                Support Team
-                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                            </h4>
-                                            <!-- The message -->
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <!-- end message -->
-                                </ul>
-                                <!-- /.menu -->
-                            </li>
-                            <li class="footer"><a href="#">See All Messages</a></li>
-                        </ul>
-                    </li>
-                    <!-- /.messages-menu -->
+            <!-- Header Navbar -->
+            <nav class="navbar navbar-static-top" role="navigation">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                <!-- Navbar Right Menu -->
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
 
-                    <!-- Notifications Menu -->
-                    <li class="dropdown notifications-menu">
-                        <!-- Menu toggle button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 10 notifications</li>
-                            <li>
-                                <!-- Inner Menu: contains the notifications -->
-                                <ul class="menu">
-                                    <li><!-- start notification -->
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                        </a>
-                                    </li>
-                                    <!-- end notification -->
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">View all</a></li>
-                        </ul>
-                    </li>
-                    <!-- Tasks Menu -->
-                    <li class="dropdown tasks-menu">
-                        <!-- Menu Toggle Button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-flag-o"></i>
-                            <span class="label label-danger">9</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 9 tasks</li>
-                            <li>
-                                <!-- Inner menu: contains the tasks -->
-                                <ul class="menu">
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <!-- Task title and progress text -->
-                                            <h3>
-                                                Design some buttons
-                                                <small class="pull-right">20%</small>
-                                            </h3>
-                                            <!-- The progress bar -->
-                                            <div class="progress xs">
-                                                <!-- Change the css width attribute to simulate progress -->
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">20% Complete</span>
+                        <!-- Messages: style can be found in dropdown.less-->
+                        <li class="dropdown messages-menu">
+                            <!-- Menu toggle button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="label label-success">4</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">You have 4 messages</li>
+                                <li>
+                                    <!-- inner menu: contains the messages -->
+                                    <ul class="menu">
+                                        <li><!-- start message -->
+                                            <a href="#">
+                                                <div class="pull-left">
+                                                    <!-- User Image -->
+                                                    <img src="/bower_components/adminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                                 </div>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <!-- end task item -->
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="#">View all tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- User Account Menu -->
-                    <li class="dropdown user user-menu">
-                        <!-- Menu Toggle Button -->
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <!-- The user image in the navbar-->
-                            <img src="/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">{{Auth::user()->name}}</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <!-- The user image in the menu -->
-                            <li class="user-header">
-                                <img src="/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                                <p>
-                                    {{Auth::user()->name}}
-                                    <small>Member since Nov. 2012</small>
-                                </p>
-                            </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="row">
-                                    <div class="text-center">
-                                        Sessão: {{session('loja')}}
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    @foreach(Auth::user()->loja as $loja)
-                                        <div class="col-xs-4 text-center" style="height: ">
-                                            <a href="{{route('setLoja', $loja->id)}}">
-                                                @if(session('loja') == $loja->id)
-                                                    <strong>{{$loja->nome}}</strong>
-                                                @else
-                                                    {{$loja->nome}}
-                                                @endif
+                                                <!-- Message title and timestamp -->
+                                                <h4>
+                                                    Support Team
+                                                    <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                </h4>
+                                                <!-- The message -->
+                                                <p>Why not buy a new awesome theme?</p>
                                             </a>
+                                        </li>
+                                        <!-- end message -->
+                                    </ul>
+                                    <!-- /.menu -->
+                                </li>
+                                <li class="footer"><a href="#">See All Messages</a></li>
+                            </ul>
+                        </li>
+                        <!-- /.messages-menu -->
+
+                        <!-- Notifications Menu -->
+                        <li class="dropdown notifications-menu">
+                            <!-- Menu toggle button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-bell-o"></i>
+                                <span class="label label-warning">10</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">You have 10 notifications</li>
+                                <li>
+                                    <!-- Inner Menu: contains the notifications -->
+                                    <ul class="menu">
+                                        <li><!-- start notification -->
+                                            <a href="#">
+                                                <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                            </a>
+                                        </li>
+                                        <!-- end notification -->
+                                    </ul>
+                                </li>
+                                <li class="footer"><a href="#">View all</a></li>
+                            </ul>
+                        </li>
+                        <!-- Tasks Menu -->
+                        <li class="dropdown tasks-menu">
+                            <!-- Menu Toggle Button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-flag-o"></i>
+                                <span class="label label-danger">9</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="header">You have 9 tasks</li>
+                                <li>
+                                    <!-- Inner menu: contains the tasks -->
+                                    <ul class="menu">
+                                        <li><!-- Task item -->
+                                            <a href="#">
+                                                <!-- Task title and progress text -->
+                                                <h3>
+                                                    Design some buttons
+                                                    <small class="pull-right">20%</small>
+                                                </h3>
+                                                <!-- The progress bar -->
+                                                <div class="progress xs">
+                                                    <!-- Change the css width attribute to simulate progress -->
+                                                    <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                        <span class="sr-only">20% Complete</span>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </li>
+                                        <!-- end task item -->
+                                    </ul>
+                                </li>
+                                <li class="footer">
+                                    <a href="#">View all tasks</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- User Account Menu -->
+                        <li class="dropdown user user-menu">
+                            <!-- Menu Toggle Button -->
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <!-- The user image in the navbar-->
+                                <img src="/bower_components/adminLTE/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                                <span class="hidden-xs">{{Auth::user()->name}}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- The user image in the menu -->
+                                <li class="user-header">
+                                    <img src="/bower_components/adminLTE/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+                                    <p>
+                                        {{Auth::user()->name}}
+                                        <small>Member since Nov. 2012</small>
+                                    </p>
+                                </li>
+                                <!-- Menu Body -->
+                                <li class="user-body">
+                                    <div class="row">
+                                        <div class="text-center">
+                                            Sessão: {{session('loja')}}
                                         </div>
-                                    @endforeach
-                                </div>
-                                <!-- /.row -->
-                            </li>
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="/admin/profile" class="btn btn-default btn-flat">Perfil</a>
-                                </div>
-                                <div class="pull-right">
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
-                                    <a href="{{ url('/logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >Sair</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- Control Sidebar Toggle Button -->
-                    <li>
-                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+                                    </div>
+                                    <div class="row">
+                                        @foreach(Auth::user()->loja as $loja)
+                                            <div class="col-xs-4 text-center" style="height: ">
+                                                <a href="{{route('setLoja', $loja->id)}}">
+                                                    @if(session('loja') == $loja->id)
+                                                        <strong>{{$loja->nome}}</strong>
+                                                    @else
+                                                        {{$loja->nome}}
+                                                    @endif
+                                                </a>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                    <!-- /.row -->
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="/admin/profile" class="btn btn-default btn-flat">Perfil</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">{{ csrf_field() }}</form>
+                                        <a href="{{ url('/logout') }}" class="btn btn-default btn-flat" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" >Sair</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <!-- Control Sidebar Toggle Button -->
+                        <li>
+                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
     </header>
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar" style="position: fixed;">
@@ -215,11 +249,13 @@
                     <a href="{{asset('/')}}" target="_blank"><i class="fa fa-globe"></i> <span>Visitar Site</span></a>
                 </li>
                 <li><a href="{{route('home.dashboard')}}"><i class="fa fa-home"></i> <span>Painel de controle</span></a></li>
-                <li><a href="{{route('cotacoes.enviadas')}}"><i class="fa fa-arrow-up"></i> <span>Cotações enviadas</span></a></li>
-                <li><a href="{{route('cotacoes.recebidas')}}"><i class="fa fa-arrow-down"></i> <span>Cotações recebidas</span></a></li>
-                <li><a href="{{route('cotacoes.publicadas')}}"><i class="fa fa-arrow-down"></i> <span>Cotações de clientes</span></a></li>
+                <li><a href="{{route('campanhas.index')}}"><i class="fa fa-bar-chart"></i> <span>Campanhas & Ofertas</span></a></li>
+                <li><a href="{{route('banners.index')}}"><i class="fa fa-image"></i> <span>Banners</span></a></li>
                 <li><a href="{{route('produtos.index')}}"><i class="fa fa-shopping-cart"></i> <span>Produtos</span></a></li>
                 <li><a href="{{route('categorias.index')}}"><i class="fa fa-list"></i> <span>Categorias</span></a></li>
+                <li><a href="{{route('marcas.index')}}"><i class="fa fa-institution"></i> <span>Marcas</span></a></li>
+                <li><a href="{{route('lojas.index')}}"><i class="fa fa-dollar"></i> <span>Lojas</span></a></li-->
+                <li><a href="{{route('tags.index')}}"><i class="fa fa-tag"></i> <span>Tags</span></a></li>
 
             </ul>
             <!-- /.sidebar-menu -->
@@ -251,13 +287,13 @@
                 @endif
                 @if($errors->any())
                     <div class="alert alert-warning">
-                    @foreach($errors->all() as $error)
-                        @if($loop->last)
-                            <p><strong>{{$error}}</strong></p>
-                        @else
-                            <p><strong>{{$error}}</strong></p>
-                        @endif
-                    @endforeach
+                        @foreach($errors->all() as $error)
+                            @if($loop->last)
+                                <p><strong>{{$error}}</strong></p>
+                            @else
+                                <p><strong>{{$error}}</strong></p>
+                            @endif
+                        @endforeach
                     </div>
                 @endif
             </div>
@@ -361,20 +397,21 @@
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="{{asset('js/app.js')}}"></script>
-<script src="{{asset('js/jquery-2.2.3.min.js')}}"></script>
-<script src="{{asset('/js/select2.min.js')}}"></script>
+<script src="/bower_components/adminLTE/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="{{asset('/js/bootstrap.min.js')}}"></script>
+<script src="/bower_components/adminLTE/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('/js/app.min.js')}}"></script>
+<script src="/bower_components/adminLTE/dist/js/app.min.js"></script>
 <!-- DatePicker -->
-<script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
-<script src="{{asset('/js/bootstrap-datepicker.pt-BR.js')}}"></script>
+<script src="/bower_components/adminLTE/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="/bower_components/adminLTE/plugins/datepicker/locales/bootstrap-datepicker.pt-BR.js"></script>
 <!-- InputMask -->
-<script src="{{asset('/js/jquery.inputmask.js')}}"></script>
-<script src="{{asset('/js/jquery.inputmask.date.extensions.js')}}"></script>
-<script src="{{asset('/js/jquery.inputmask.extensions.js')}}"></script>
+<script src="/bower_components/adminLTE/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="/bower_components/adminLTE/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="/bower_components/adminLTE/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+<script src="/bower_components/adminLTE/plugins/select2/select2.full.min.js"></script>
+
+
 <script>
     $('select').select2();
     $(function () {
