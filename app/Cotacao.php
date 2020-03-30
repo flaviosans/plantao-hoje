@@ -15,6 +15,7 @@ class Cotacao extends Model
     protected $fillable = ['titulo', 'descricao','tipo', 'maximo', 'cotacao_id', 'validade'];
     protected $dates = ['deleted_at'];
     protected $table = 'cotacoes';
+
     public function imagem(){
         return $this->morphMany('\App\Imagem', 'dono');
     }
