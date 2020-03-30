@@ -27,6 +27,9 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function cotacao(){
+        return $this->hasMany('\App\Cotacao');
+    }
     public function endereco()
     {
         return $this->morphMany('\App\Endereco', 'enderecavel');

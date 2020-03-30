@@ -8,8 +8,9 @@
     products: [],
     items:function(){
       var count = 0;
-      for(var key in cart.data)
-        count++;
+      cart.products.forEach(p => {
+        count += parseInt(p.quantidade);
+      });
       return count;
     },
     load:function () {

@@ -32,9 +32,7 @@ class ProdutoObserver
             $cada->delete();
         }
 
-        //foreach($produto->categoria as $categoria) {
         $produto->categoria()->detach();
-        //}
 
         $produto->marca()->dissociate();
 

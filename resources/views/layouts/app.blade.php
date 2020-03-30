@@ -46,8 +46,8 @@
         <div class="agile-login">
             <ul>
                 <li><a href="registered.html"> Create Account </a></li>
-                <li><a href="login.html">Login</a></li>
-                <li><a href="contact.html">Help</a></li>
+                <li><a href="{{asset('/login')}}">Login</a></li>
+                <li><a href="{{asset('/checkout')}}">Checkout</a></li>
 
             </ul>
         </div>

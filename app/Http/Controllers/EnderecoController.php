@@ -48,7 +48,7 @@ class EnderecoController extends Controller
 
         Message::info('Gravado Com Sucesso!');
 
-        return redirect()->route('admin.enderecos.index');
+        return redirect()->route('admin.enderecos.enderecos');
     }
 
     /**

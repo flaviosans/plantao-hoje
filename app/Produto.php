@@ -4,13 +4,16 @@ namespace App;
 
 use App\Library\File;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Produto extends Model
 {
-    protected $fillable = ['nome', 'codigo_barras', 'marca_id', 'loja_id', 'medida_id'];
-    protected $guarded = ['id', 'updated_at', 'created_at'];
-    protected $appends = ['tags', 'text'];
-    protected $hidden = ['created_at', 'updated_at', 'marca_id', 'loja_id'];
+    use SoftDeletes;
+    protected $fillable =   ['nome', 'codigo_barras', 'marca_id', 'loja_id', 'medida_id'];
+    protected $guarded =    ['id', 'updated_at', 'created_at'];
+    protected $appends =    ['tags', 'text'];
+    protected $hidden =     ['created_at', 'updated_at', 'marca_id', 'loja_id'];
+    protected $dates =      ['created_at', 'updated_at', 'deleted_at'];
     
     public function getQuantasItensAttribute(){
         return $this->item->count();
@@ -34,6 +37,10 @@ class Produto extends Model
 
     public function marca(){
         return $this->belongsTo('\App\Marca');
+    }
+
+    public function oferta(){
+        return $this->hasMany('\App\Oferta');
     }
 
     public function item(){

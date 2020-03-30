@@ -251,6 +251,9 @@ desired effect
                 <li><a href="{{route('home.dashboard')}}"><i class="fa fa-home"></i> <span>Painel de controle</span></a></li>
                 <li><a href="{{route('campanhas.index')}}"><i class="fa fa-bar-chart"></i> <span>Campanhas & Ofertas</span></a></li>
                 <li><a href="{{route('banners.index')}}"><i class="fa fa-image"></i> <span>Banners</span></a></li>
+                <li><a href="{{route('cotacoes.enviadas')}}"><i class="fa fa-arrow-up"></i> <span>Cotações enviadas</span></a></li>
+                <li><a href="{{route('cotacoes.recebidas')}}"><i class="fa fa-arrow-down"></i> <span>Cotações recebidas</span></a></li>
+                <li><a href="{{route('cotacoes.publicadas')}}"><i class="fa fa-arrow-down"></i> <span>Cotações de clientes</span></a></li>
                 <li><a href="{{route('produtos.index')}}"><i class="fa fa-shopping-cart"></i> <span>Produtos</span></a></li>
                 <li><a href="{{route('categorias.index')}}"><i class="fa fa-list"></i> <span>Categorias</span></a></li>
                 <li><a href="{{route('marcas.index')}}"><i class="fa fa-institution"></i> <span>Marcas</span></a></li>

@@ -6,10 +6,19 @@
             cart.list();
         });
     </script>
-    <div id="items"></div>
-    <div class="cart-wrap">
-        <div id="cart-products"></div>
-        <div id="cart-list"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div id="items"></div>
+                <div class="cart-wrap">
+                    <div id="cart-products"></div>
+                    <div id="cart-list"></div>
+                </div>
+            </div>
+            <div class="col">
+
+            </div>
+        </div>
     </div>
     <form id="customer-data">
         <div class="form-group">

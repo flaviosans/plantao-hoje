@@ -14,6 +14,7 @@
 Route::get('/', 'FrontController@index')->name('index');
 Route::get('/busca', 'FrontController@busca')->name('busca');
 
+Route::get('/itens/', 'FrontController@itens')->name('itens');
 Route::get('/ofertas/', 'FrontController@ofertas')->name('ofertas');
 Route::get('/checkout/', 'FrontController@checkout')->name('checkout');
 
@@ -23,11 +24,20 @@ Route::group(['prefix'=>'admin', 'middleware'=> ['auth','checalojaselecionada']]
     Route::get('/', 'HomeController@index');
     Route::get('dashboard', 'HomeController@dashboard')->name('home.dashboard');
     Route::get('profile', 'HomeController@profile');
+    Route::get('cotacoes/enviadas', 'CotacaoController@enviadas')->name('cotacoes.enviadas');
+    Route::get('cotacoes/recebidas', 'CotacaoController@recebidas')->name('cotacoes.recebidas');
+    Route::get('cotacoes/publicadas', 'CotacaoController@publicadas')->name('cotacoes.publicadas');
+    Route::get('cotacoes/{id}/respostas', 'CotacaoController@respostas')->name('cotacoes.respostas');
+    Route::post('cotacoes/{id}/publicar', 'CotacaoController@publicar')->name('cotacoes.publicar');
+    Route::get('cotacoes/{id}/responder', 'CotacaoController@responder')->name('cotacoes.responder');
     Route::resource('banners', 'BannerController');
+    Route::resource('cotacoes', 'CotacaoController');
     Route::resource('campanhas', 'CampanhaController');
     Route::resource('lojas', 'LojaController');
     Route::resource('campanhas.ofertas', 'OfertaController');
     Route::resource('ofertas', 'OfertaController');
+    Route::resource('cotacoes.itens', 'ItemController');
+    Route::resource('itens', 'ItemController');
     Route::resource('produtos', 'ProdutoController');
     route::resource('tags','TagController');
     route::resource('marcas', 'MarcaController');
