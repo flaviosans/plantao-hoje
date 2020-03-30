@@ -12,6 +12,11 @@
                             @endif
                             {{csrf_field()}}
                             <div class="form-group">
+                                <label for="nome">Descrição</label>
+                                <input class="form-control" type="text" name="descricao" value="{{$endereco->descricao or old('descricao')}}">
+                            </div>
+
+                            <div class="form-group">
                                 <label for="nome">Logradouro</label>
                                 <input class="form-control" type="text" name="logradouro" value="{{$endereco->logradouro or old('logradouro')}}">
                             </div>

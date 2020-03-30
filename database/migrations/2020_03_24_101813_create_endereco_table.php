@@ -25,6 +25,7 @@ class CreateEnderecoTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('enderecavel_id');
             $table->string('enderecavel_type');
+            $table->string('descricao');
             $table->string('logradouro');
             $table->string('bairro');
             $table->unsignedBigInteger('cep_id');
