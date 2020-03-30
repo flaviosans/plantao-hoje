@@ -32,8 +32,13 @@
             <small id="enderecoHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         <div class="form-group">
+            <label for="nome">Email:</label>
+            <input type="text" class="form-control" id="email" name="email" aria-describedby="enderecoHelp" placeholder="Enter email">
+            <small id="enderecoHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
             <label for="telefone">Password</label>
-            <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Password">
+            <input type="text" class="form-control" id="telefone" name="password" placeholder="Password">
         </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">

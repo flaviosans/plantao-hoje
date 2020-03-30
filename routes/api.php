@@ -1,5 +1,7 @@
 <?php
 
+use App\Produto;
+use App\User;
 use Illuminate\Http\Request;
 
 /*
@@ -18,5 +20,22 @@ use Illuminate\Http\Request;
 });*/
 
 Route::get('buscar/produtos/', function(Request $request){
-    return \App\Produto::where('nome', 'like', '%' . $request->q . '%')->orWhere('codigo_barras', '=', $request->q)->get();
+    return Produto::where('nome', 'like', '%' . $request->q . '%')->orWhere('codigo_barras', '=', $request->q)->get();
+});
+
+Route::post('checkout', function(Request $request){
+    $json = $request->json()->all();
+
+    $user = User::where('email','=', $json['cliente']['email'])->exists();
+    if(!$user){
+        $user = User::create([
+            'name' => $json['cliente']['nome'],
+            'email' => $json['cliente']['email'],
+            'password' => bcrypt($json['cliente']['password'])
+        ]);
+        return $user->email->toJson();
+    }
+    else{
+        return "usuário já existe";
+    }
 });
