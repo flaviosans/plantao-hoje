@@ -15,7 +15,7 @@
     },
     load:function () {
       cart.products = localStorage.getItem("products");
-      if(cart.products == null) { cart.products = {}; }
+      if(cart.products == null) { cart.products = []; }
       else {cart.products = JSON.parse(cart.products); }
     },
     save:function(){
@@ -44,6 +44,7 @@
       cart.products.splice(idx, 1);
     },
     list:function(){
+      cart.load();
       var container = document.getElementById("cart-list"),
         item = null, part = null;
       container.innerHTML = "";
@@ -83,7 +84,6 @@
         part.innerHTML = this.items();
         container.appendChild(part);
 
-        
         // Empty buttons
         item = document.createElement("input");
         item.type = "button";
@@ -120,10 +120,30 @@
     },
     checkout:function(){
       var pedido = {};
-      var user = document.getElementById('customer-data');
+      var cliente = document.getElementById('customer-data');
       pedido.ofertas = cart.products;
-      pedido.user = formToJSON(user.elements);
-      console.log(JSON.stringify(pedido));
+      pedido.cliente = formToJSON(cliente);
+      cart.request(
+          'http://localhost:8000/api/checkout',
+          'post',
+          function(){console.log("REquisição pronta!")},
+          pedido,
+          function () {console.log('Aguardando resposta')});
+      },
+    request:function(action, method, doneCallback, data, waitCallback = console.log, fallback = console.log){
+      let request = new XMLHttpRequest();
+      request.onreadystatechange = function () {
+        if (request.readyState === request.DONE) {
+          if (request.status === 200 || request.status === 201)
+            doneCallback(request.responseURL, request.responseText);
+          else fallback(data, request.responseText);
+        } else {
+          waitCallback(request.responseURL, request.responseText);
+        }
+      }
+      request.open(method, action, true);
+      request.setRequestHeader('Content-type', 'application/json');
+      request.send(JSON.stringify(data));
     }
   };
 
@@ -183,6 +203,3 @@ const isOptional = element => {
   return Array.from(element.classList).includes('ea-optional-field');
 }
 
-/**
- * Exibe a tela de agradecimento ao leitor
- */
