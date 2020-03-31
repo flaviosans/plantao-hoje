@@ -17,7 +17,8 @@ class ChecaLojaSelecionada
     public function handle($request, Closure $next)
     {
         if(!$request->session()->has('loja')){
-            Message::Warning("Nenhuma loja selecionada! ");  
+            Message::Warning("Antes de prosseguir, cadastre uma loja  no seu perfil! ");
+            return redirect()->route('lojas.index');
         }  
         return $next($request);
     }
