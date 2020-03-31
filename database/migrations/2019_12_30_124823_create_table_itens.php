@@ -17,7 +17,8 @@ class CreateTableItens extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('produto_id');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('cotacao_id');
+            $table->unsignedBigInteger('petivel_id');
+            $table->string('petivel_type');
             $table->float('preco')->default(0.0);
             $table->float('quantidade')->default(0.0);
             $table->string('observacao')->nullable();

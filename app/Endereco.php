@@ -10,10 +10,14 @@ class Endereco extends Model
         'descricao',
         'logradouro',
         'bairro',
-        'cep_id'
+        'cep'
     ];
     
-    public function enderecavel(){
-        return $this->morphTo();
+    public function user(){
+        return $this->morphedByMany('\App\User', 'enderecavel');
+    }
+
+    public function pedido(){
+        return $this->morphedByMany('\App\Pedido', 'enderecavel');
     }
 }

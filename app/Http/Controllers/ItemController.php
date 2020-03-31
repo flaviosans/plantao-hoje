@@ -31,7 +31,7 @@ class ItemController extends Controller
         else{
             $cotacao = Cotacao::find($id);
             $dados = array(
-                'itens'=> Item::where('cotacao_id', '=', $id)->orderBy('id', 'desc')->paginate(10),
+                'itens'=> $cotacao->item()->paginate(10),
                 'cotacao'=> $cotacao,
                 'titulo'=> $cotacao->titulo .' - Itens'
             );
@@ -58,26 +58,22 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(OfertaRequest $request, $id)
+    public function store(Request $request, $id)
     {
         $item = new Item;
-        $item->cotacao_id = $id;
         $item->user_id = Auth::user()->id;
         $item->fill($request->all());
 
-        if(!isset($item->preco)) {
-            $item->preco = 0.0;
-        }
-
-        if(isset($request->nome)){
+/*        if(isset($request->nome)){
             $produto = new Produto(['nome'=>$request->nome]);
             $produto->save();
 
             $item->produto_id = $produto->id;
-        }
-        $item->save();
+        }*/
+        $cotacao = Cotacao::find($id);
+        $cotacao->item()->save($item);
 
-        Message::info('Item Adicionada com sucesso!');
+        Message::info('Item Adicionado com sucesso!');
 
         return redirect()->route('cotacoes.itens.index', $id);
     }

@@ -8,8 +8,8 @@
         @endslot
         @slot('conteudo')
             <p>{{$cotacao->user->name}}</p>
-            <p>{{$cotacao->user->endereco()->first()->logradouro}}</p>
-            <p>{{$cotacao->user->endereco()->first()->cep_id}}</p>
+            <p>{{$cotacao->user->endereco()->first()->logradouro or ''}}</p>
+            <p>{{$cotacao->user->endereco()->first()->cep or ''}}</p>
         @endslot
         @slot('rodape')
         @endslot
@@ -94,8 +94,8 @@
                         @endif
                         <td>
                             <a href="#" onclick="event.preventDefault(); document.getElementById('delete-{{$cada->id}}').submit();">Apagar</a> |
-                            <a href="{{route('cotacoes.itens.edit', [$cada->cotacao->id, $cada->id])}}">Editar</a>
-                            <form id="delete-{{$cada->id}}" action="{{route('cotacoes.itens.destroy', [$cada->cotacao->id, $cada->id])}}" method="POST">
+                            <a href="{{route('cotacoes.itens.edit', [$cada->petivel->id, $cada->id])}}">Editar</a>
+                            <form id="delete-{{$cada->id}}" action="{{route('cotacoes.itens.destroy', [$cada->petivel->id, $cada->id])}}" method="POST">
                                 {{method_field('DELETE')}}
                                 {{csrf_field()}}
                             </form>

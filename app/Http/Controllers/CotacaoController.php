@@ -80,17 +80,16 @@ class CotacaoController extends Controller
 
         foreach($cotacao_parent->item as $cada){
             $item = new Item([
-                'cotacao_id'=>$cotacao->id,
                 'produto_id'=> $cada->produto_id,
                 'quantidade'=> $cada->quantidade
             ]);
             $item->user_id = $cotacao->user_id;
             $cotacao->item()->save($item);
-            $item->save();
+//            $item->save();
         }
         $dados = [
             'cotacao' => $cotacao,
-            'itens' => Item::por_cotacao($cotacao->id)->paginate(10),
+            'itens' => $cotacao->item()->paginate(10),
         ];
         return view('admin.itens.itens', $dados);
     }
@@ -112,10 +111,12 @@ class CotacaoController extends Controller
         $cotacao->user_id = Auth::user()->id;
         $cotacao->save();
 
+
+
         $dados = [
             'titulo' => $cotacao->titulo,
             'cotacao' => $cotacao,
-            'itens' => Item::por_cotacao($cotacao->id)->paginate(10),
+            'itens' => $cotacao->item()->paginate(10),
         ];
 
         return view('admin.itens.itens', $dados);

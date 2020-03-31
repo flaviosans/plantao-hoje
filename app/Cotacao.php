@@ -21,7 +21,7 @@ class Cotacao extends Model
     }
 
     public function item(){
-        return $this->hasMany('\App\Item');
+        return $this->morphMany('\App\Item', 'petivel');
     }
 
     public function user(){

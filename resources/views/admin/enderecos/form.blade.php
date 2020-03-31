@@ -27,8 +27,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="cep_id">CEP</label>
-                                <input class="form-control" type="text" name="cep_id" value="">
+                                <label for="cep">CEP</label>
+                                <input class="form-control" type="text" name="cep" value="">
                             </div>
 
                             <div class="form-group">

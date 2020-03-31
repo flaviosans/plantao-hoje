@@ -30,9 +30,9 @@ class User extends Authenticatable
     public function cotacao(){
         return $this->hasMany('\App\Cotacao');
     }
-    public function endereco()
-    {
-        return $this->morphMany('\App\Endereco', 'enderecavel');
+
+    public function endereco(){
+        return $this->morphToMany('\App\Endereco', 'enderecavel');
     }
 
     public function loja(){

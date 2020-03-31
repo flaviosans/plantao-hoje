@@ -23,15 +23,18 @@ class CreateEnderecoTable extends Migration
 
         Schema::create('enderecos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('enderecavel_id');
-            $table->string('enderecavel_type');
             $table->string('descricao');
             $table->string('logradouro');
             $table->string('bairro');
-            $table->unsignedBigInteger('cep_id');
+            $table->unsignedBigInteger('cep');
             $table->timestamps();
             $table->softDeletes();
             //$table->foreign('cep_id')->references('id')->on('ceps');
+        });
+        Schema::create('enderecaveis', function (Blueprint $table) {
+            $table->unsignedBigInteger('endereco_id');
+            $table->unsignedBigInteger('enderecavel_id');
+            $table->string('enderecavel_type');
         });
     }
 
@@ -42,7 +45,8 @@ class CreateEnderecoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('enderecos');
-        Schema::dropIfExists('ceps');
+        Schema::drop('enderecos');
+        Schema::drop('ceps');
+        Schema::drop('enderecaveis');
     }
 }
