@@ -16,8 +16,8 @@ class CreateTableImagems extends Migration
         Schema::create('imagems', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('dono_id');
-            $table->string('caminho');
             $table->string('dono_type');
+            $table->string('caminho');
             $table->timestamps();
             $table->softDeletes();
         });
