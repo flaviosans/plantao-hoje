@@ -16,11 +16,11 @@ Route::get('/busca', 'FrontController@busca')->name('busca');
 
 Route::get('/itens/', 'FrontController@itens')->name('itens');
 Route::get('/ofertas/', 'FrontController@ofertas')->name('ofertas');
-Route::get('/checkout/', 'FrontController@checkout')->name('checkout');
+Route::get('/checkout/', 'FrontController@checkout')->name('checkout')->middleware('auth');
 
 Auth::routes();
 
-Route::group(['prefix'=>'admin', 'middleware'=> ['auth','checalojaselecionada']], function (){
+Route::group(['prefix'=>'admin', 'middleware'=> ['auth', 'checalojaselecionada']], function (){
     Route::get('/', 'HomeController@index');
     Route::get('dashboard', 'HomeController@dashboard')->name('home.dashboard');
     Route::get('profile', 'HomeController@profile');
@@ -33,7 +33,6 @@ Route::group(['prefix'=>'admin', 'middleware'=> ['auth','checalojaselecionada']]
     Route::resource('banners', 'BannerController');
     Route::resource('cotacoes', 'CotacaoController');
     Route::resource('campanhas', 'CampanhaController');
-    Route::resource('lojas', 'LojaController');
     Route::resource('campanhas.ofertas', 'OfertaController');
     Route::resource('ofertas', 'OfertaController');
     Route::resource('cotacoes.itens', 'ItemController');
@@ -46,3 +45,6 @@ Route::group(['prefix'=>'admin', 'middleware'=> ['auth','checalojaselecionada']]
     Route::resource('categorias', 'CategoriaController');
     Route::resource('enderecos', 'EnderecoController');
 });
+
+Route::resource('lojas', 'LojaController')->middleware('auth');
+
