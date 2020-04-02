@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Banner;
+use App\Cotacao;
 use App\Endereco;
 use App\Item;
 use App\Marca;
 use App\Oferta;
 use App\Pedido;
 use App\Produto;
+use App\Telefone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,9 +44,10 @@ class FrontController extends Controller
 
     public function pedido(Request $request)
     {
-        $pedido = new Pedido();
+        $pedido = new Cotacao();
         $itens = [];
         $id_endereco = $request->input('endereco.endereco_id');
+        $id_telefone = $request->input('telefone.telefone_id');
         Auth::user()->pedido()->save($pedido);
 
         if($id_endereco == 0){
@@ -53,8 +56,18 @@ class FrontController extends Controller
             $pedido->endereco()->save($endereco);
             Auth::user()->endereco()->save($endereco);
         } else{
-            $endereco = Auth::user()->endereco()->find($id_endereco)->get();
+            $endereco = Auth::user()->endereco()->where('id', $id_endereco)->first();
             $pedido->endereco()->save($endereco);
+        }
+
+        if($id_telefone == 0){
+            $telefone = new Telefone();
+            $telefone->fill($request->json('telefone'));
+            $pedido->telefone()->save($telefone);
+            Auth::user()->telefone()->save($telefone);
+        } else{
+            $telefone = Auth::user()->telefone()->where('id', $id_telefone)->first();
+            $pedido->telefone()->save($telefone);
         }
 
         foreach ($request->json('itens') as $cada) {

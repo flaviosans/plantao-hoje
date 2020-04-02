@@ -12,14 +12,10 @@ class Cotacao extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'titulo', 'descricao','tipo', 'maximo', 'cotacao_id', 'validade'
+        'tipo', 'maximo', 'cotacao_id', 'obs', 'validade'
     ];
 
     protected $dates = ['deleted_at'];
-
-    public function imagem(){
-        return $this->morphMany('\App\Imagem', 'dono');
-    }
 
     public function item(){
         return $this->morphMany('\App\Item', 'lista');
@@ -31,10 +27,6 @@ class Cotacao extends Model
 
     public function setValidadeAttribute($value){
         $this->attributes['validade'] = Date::toUTF($value);
-    }
-
-    protected static function boot(){
-        parent::boot();
     }
 
     public function getQuantasItensAttribute(){

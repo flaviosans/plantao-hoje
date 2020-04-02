@@ -42,4 +42,8 @@ class User extends Authenticatable
     public function pedido(){
         return $this->hasMany('\App\Pedido');
     }
+
+    public function telefone(){
+        return $this->morphToMany('\App\Telefone', 'telefonavel');
+    }
 }

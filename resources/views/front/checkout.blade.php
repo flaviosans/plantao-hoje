@@ -31,6 +31,35 @@
                 </form>
             </div>
             <div class="col-md-6">
+                <form id="novo-telefone">
+                    <h3>Telefone para contato: </h3>
+                    <br>
+                    <div class="form-check">
+                        @foreach(Auth::user()->telefone()->get() as $cada)
+                            <input class="form-check-input"
+                                   type="radio"
+                                   name="telefone_id"
+                                   id="telefone_id{{$cada->id}}"
+                                   value="{{$cada->id}}">
+                            <label class="form-check-label" for="telefone_id{{$cada->id}}">
+                                {{$cada->descricao or $cada->numero}}
+                            </label>
+                        @endforeach
+                    </div>
+                    <div class="form-group">
+                        <input class="form-check-input"
+                               type="radio"
+                               name="telefone_id"
+                               id="telefone_id"
+                               @if(Auth::user()->telefone()->count() == 0)
+                               checked
+                               @endif
+                               value="0">
+                        <label class="form-check-label" for="numero">
+                            Novo telefone: <input type="text" id="numero" name="numero" value="{{old('novo-telefone') or ''}}">
+                        </label>
+                    </div>
+                </form>
                 <form id="novo-endereco">
                     <h3>Endereço de entrega:</h3>
                     <br>
@@ -40,6 +69,9 @@
                                    type="radio"
                                    name="endereco_id"
                                    id="endereco_id{{$cada->id}}"
+                                   @if($loop->first)
+                                           checked
+                                   @endif
                                    value="{{$cada->id}}">
                             <label class="form-check-label" for="endereco_id{{$cada->id}}">
                                 {{$cada->descricao}}

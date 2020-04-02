@@ -17,12 +17,10 @@ class CreateTableCotacoes extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('cotacao_id')->default(0);
-            $table->string('titulo');
-            $table->string('descricao');
             $table->string('tipo');
             $table->string('status')->default('RASCUNHO');
             $table->integer('maximo')->default(4);
-            $table->string('observacao')->nullable();
+            $table->string('obs')->nullable();
             $table->timestamp('validade');
             $table->timestamps();
             $table->softDeletes();

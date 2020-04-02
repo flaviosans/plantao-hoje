@@ -30,7 +30,6 @@
                                             @if($oferta->preco_normal != $oferta->preco_promocao)
                                             <span>{{$oferta->preco_normal}}</span>
                                             @endif
-
                                         </h4>
                                     </div>
                                     <div class="snipcart-details top_brand_home_details">

@@ -1,159 +1,208 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
-<!DOCTYPE html>
-<html>
+@verbatim
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+        *:focus {
+            outline: none;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #DDD;
+            font-size: 16px;
+            color: #222;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 300;
+        }
+
+        #login-box {
+            position: relative;
+            margin: 5% auto;
+            width: 600px;
+            height: 400px;
+            background: #FFF;
+            border-radius: 2px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            padding: 40px;
+            width: 300px;
+            height: 400px;
+        }
+
+        h1 {
+            margin: 0 0 20px 0;
+            font-weight: 300;
+            font-size: 28px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            display: block;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            padding: 4px;
+            width: 220px;
+            height: 32px;
+            border: none;
+            border-bottom: 1px solid #AAA;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 15px;
+            transition: 0.2s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-bottom: 2px solid #16a085;
+            color: #16a085;
+            transition: 0.2s ease;
+        }
+
+        input[type="submit"] {
+            margin-top: 28px;
+            width: 120px;
+            height: 32px;
+            background: #16a085;
+            border: none;
+            border-radius: 2px;
+            color: #FFF;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: 0.1s ease;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover,
+        input[type="submit"]:focus {
+            opacity: 0.8;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            transition: 0.1s ease;
+        }
+
+        input[type="submit"]:active {
+            opacity: 1;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+            transition: 0.1s ease;
+        }
+
+        .or {
+            position: absolute;
+            top: 180px;
+            left: 280px;
+            width: 40px;
+            height: 40px;
+            background: #DDD;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            line-height: 40px;
+            text-align: center;
+        }
+
+        .right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            box-sizing: border-box;
+            padding: 40px;
+            width: 300px;
+            height: 400px;
+            background: url('https://goo.gl/YbktSj');
+            background-size: cover;
+            background-position: center;
+            border-radius: 0 2px 2px 0;
+        }
+
+        .right .loginwith {
+            display: block;
+            margin-bottom: 40px;
+            font-size: 28px;
+            color: #FFF;
+            text-align: center;
+        }
+
+        button.social-signin {
+            margin-bottom: 10px;
+            width: 220px;
+            height: 36px;
+            border: none;
+            border-radius: 2px;
+            color: #FFF;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            transition: 0.2s ease;
+            cursor: pointer;
+        }
+
+        button.social-signin:hover,
+        button.social-signin:focus {
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+            transition: 0.2s ease;
+        }
+
+        button.social-signin:active {
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+            transition: 0.2s ease;
+        }
+
+        button.social-signin.facebook {
+            background: #32508E;
+        }
+
+        button.social-signin.twitter {
+            background: #55ACEE;
+        }
+
+        button.social-signin.google {
+            background: #DD4B39;
+        }
+    </style>
+    @endverbatim
+
+<!doctype html>
+<html lang="en">
 <head>
-<title>Área Restrita</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Smooth Sliding Forms template Responsive, Login form web template,Flat Pricing w3tables,Flat Drop downs  Sign up Web Templates, Flat Web Templates, Login sign up Responsive web template, SmartPhone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Custom Theme files -->
-<link href="/adm/css/style.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //Custom Theme files -->
-
-<!-- font-awesome icons -->
-<link href="/adm/css/font-awesome.css" rel="stylesheet">
-<!-- //font-awesome icons -->
-
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
 </head>
 <body>
-	<!-- main -->
-	<div class="main agileits-w3layouts">
-		<h3>Bem Vindo ao Painel Administrativo!</h3>
-		<div class="main-agileinfo">
-			<div class="agileui-forms">
-				<div class="container-form">
-					<div class="form-item log-in"><!-- login form-->
-						<div class="w3table agileinfo"> 
-							<div class="w3table-cell register"> 
-								<div class="w3table-tophead">
-									<h2>Entrar</h2>
-								</div>
-								<form action="{{ route('login') }}" method="post">
-								{{ csrf_field() }} 
-									<div class="fields-grid">
-										<div class="styled-input agile-styled-input-top">
-											<input id="email" type="email" name="email" required=""> 
-											<label>E-Mail</label>
-                                @if ($errors->has('email'))
-                                    <span>
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-										</div>
-										<div class="styled-input">
-											<input id="password" type="password" name="password" required="">
-											<label>Senha</label>
-                                @if ($errors->has('password'))
-                                    <span>
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-										</div>
-										<a href="{{ route('password.request') }}">Esqueceu a senha?</a>
-										<input type="submit" value="Entrar">
-									</div>
-{{--									<div class="social-grids">
-										<div class="social-text">
-											<p>Or Sign in with</p>
-										</div>
-										<div class="social-icons">
-											<ul>
-												<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-												<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-												<li><a href="#"><i class="fa fa-rss"></i></a></li>
-											</ul>
-										</div>
-										<div class="clear"> </div>
-									</div>--}}
+<div id="login-box">
+    <div class="left">
+        <h1>Registrar</h1>
+        <form action="{{ route('register') }}" method="post">
+            {{csrf_field()}}
+            <input type="text" name="name" placeholder="Nome" />
+            <input type="text" name="email" placeholder="E-mail" />
+            <input type="text" name="phone" placeholder="Telefone" />
+            <input type="password" name="password" placeholder="Senha" />
+            <input type="submit" name="signup_submit" value="Sign me up" />
+        </form>
 
-								</form>  
-							</div>
-						</div>
-					</div>
-					<div class="form-item sign-up"><!-- sign-up form-->
-						<div class="w3table w3-agileits">
-							<div class="w3table-cell register">   
-									<h3>Sign up</h3>
-								<form action="{{ route('register') }}" method="post">
-									{{ csrf_field() }}
-									<div class="fields-grid">
-										<div class="styled-input agile-styled-input-top">
-											<input id="name" type="text" name="name" value="{{ old('name') }}" required="" autofocus> 
-											<label>Name</label>
-                                @if ($errors->has('name'))
-                                    <span>
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                @endif
-										</div>
-										<div class="styled-input">
-											<input id="email" type="email" name="email" value="{{ old('email') }}" required="">
-											<label>Email</label>
-											<span></span>
-										</div>
-										<div class="styled-input">
-											<input id="password" type="password" name="password" required="">
-											<label>Password</label>
-                                @if ($errors->has('password'))
-                                    <span>
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-										</div>
-										<div class="styled-input">
-											<input type="password" name="password_confirmation" required="">
-											<label>Password</label>
-											<span></span>
-										</div>
-										<div class="clear"> </div>
-										 <label class="checkbox"><input type="checkbox" name="checkbox" checked><i></i>I agree to the <a href="#">Terms and Conditions</a></label>
-									</div>
-									<input type="submit" value="Sign up">
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="container-info">
-					<div class="info-w3lsitem">
-						<div class="w3table">
-							<div class="w3table-cell">
-								<p> Tem uma conta? </p>
-								<div class="btn"> Entrar </div>
-							</div>
-						</div>
-					</div>
-					<div class="info-w3lsitem">
-						<div class="w3table">
-							<div class="w3table-cell">
-								<p> Não tem uma conta?</p>
-								<div class="btn">Cadastrar</div>
-							</div>
-						</div>
-					</div>
-					<div class="clear"> </div>
-				</div>
-			</div> 
-		</div>	
-	</div>   
-	<!-- //main -->
+    </div>
 
-	<!-- js -->  
-	<script  src=" adm/js/jquery-1.12.3.min.js"></script> 
-	<script>
-		$(".info-w3lsitem .btn").click(function() {
-			  $(".main-agileinfo").toggleClass("log-in");
-			});
-			$(".container-form .btn").click(function() {
-			  $(".main-agileinfo").addClass("active");
-		});
-	</script>
-	<!-- //js --> 
+    <div class="right">
+        <h1>Logar</h1>
+        <form action="{{ route('login') }}" method="post">
+            {{csrf_field()}}
+            <input type="text" name="email" placeholder="Email" />
+            <input type="text" name="password" placeholder="Password" />
+            <input type="submit" name="signup_submit" value="Logar" />
+        </form>
+{{--        <span class="loginwith">Sign in with<br />social network</span>
+        <button class="social-signin facebook">Log in with facebook</button>
+        <button class="social-signin twitter">Log in with Twitter</button>
+        <button class="social-signin google">Log in with Google+</button>--}}
+    </div>
+    <div class="or">OR</div>
+</div>
 </body>
 </html>

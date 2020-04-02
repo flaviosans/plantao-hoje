@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableImagems extends Migration
+class CreateTableImagens extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTableImagems extends Migration
      */
     public function up()
     {
-        Schema::create('imagems', function (Blueprint $table) {
+        Schema::create('imagens', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('dono_id');
             $table->string('dono_type');
@@ -30,7 +30,7 @@ class CreateTableImagems extends Migration
      */
     public function down()
     {
-        Schema::table('imagems', function (Blueprint $table) {
+        Schema::table('imagens', function (Blueprint $table) {
             $table->drop();
         });
     }

@@ -141,8 +141,10 @@
     checkout:function(){
       var pedido = {};
       var endereco = document.getElementById('novo-endereco');
+      var telefone = document.getElementById('novo-telefone');
       pedido.itens = cart.products;
       pedido.endereco = formToJSON(endereco);
+      pedido.telefone = formToJSON(telefone);
       cart.request(
           'http://localhost:8000/checkout',
           'post',

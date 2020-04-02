@@ -8,8 +8,14 @@
     @slot('conteudo')
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
-                    {{$endereco->descricao or 'Sem endereco'}}
+                <div class="col-sm-4">
+                    {{$endereco->descricao or 'Sem endereco'}}, {{$endereco->bairro}} - {{$endereco->cep}}
+                </div>
+                <div class="col-sm-4">
+                    {{$pedido->user->name}} - {{$pedido->user->telefone()->first()->numero}}
+                </div>
+                <div>
+                    {{$pedido->telefone()->first()->numero or 'Sem telefone no pedido'}}
                 </div>
             </div>
         </div>

@@ -24,6 +24,7 @@ Route::get('buscar/produtos/', function(Request $request){
 
 Route::post('pedido', 'FrontController@pedido')->middleware('auth');
 
+// TODO: REFATORAR ESSE CÓDIGO, TIRAR ESSA RESPONSABILIDADE DO CHECKOUT
 Route::post('checkout', function(Request $request){
     $json = $request->json()->all();
 

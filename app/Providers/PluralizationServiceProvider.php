@@ -12,8 +12,10 @@ class PluralizationServiceProvider extends ServiceProvider
         Inflector::rules('plural', ['irregular' => [
             'cotacao' => 'cotacoes',
             'item' => 'itens',
+            'imagem' => 'imagens',
             'enderecavel' => 'enderecaveis',
-            'petivel' => 'petiveis'
+            'petivel' => 'petiveis',
+            'telefonavel' => 'telefonaveis'
         ]]);
     }
 }
