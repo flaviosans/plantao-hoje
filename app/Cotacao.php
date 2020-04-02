@@ -3,7 +3,6 @@
 namespace App;
 
 use \App\Library\Date;
-use App\Library\Message;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
@@ -12,16 +11,18 @@ class Cotacao extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['titulo', 'descricao','tipo', 'maximo', 'cotacao_id', 'validade'];
+    protected $fillable = [
+        'titulo', 'descricao','tipo', 'maximo', 'cotacao_id', 'validade'
+    ];
+
     protected $dates = ['deleted_at'];
-    protected $table = 'cotacoes';
 
     public function imagem(){
         return $this->morphMany('\App\Imagem', 'dono');
     }
 
     public function item(){
-        return $this->morphMany('\App\Item', 'petivel');
+        return $this->morphMany('\App\Item', 'lista');
     }
 
     public function user(){
@@ -34,13 +35,6 @@ class Cotacao extends Model
 
     protected static function boot(){
         parent::boot();
-
-/*        static::deleting(function($cotacao){
-            $itens = array();
-            foreach($cotacao->item as $item){
-                $item->delete();
-            }
-        });*/
     }
 
     public function getQuantasItensAttribute(){

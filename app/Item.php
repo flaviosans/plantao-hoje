@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Item extends Model
 {
     use SoftDeletes;
-    protected $fillable = ['produto_id', 'preco', 'quantidade', 'observacao'];
-    protected $table = 'itens';
+    protected $fillable = [
+        'produto_id', 'preco_normal', 'preco_promocao', 'quantidade', 'observacao'
+    ];
 
-    public function petivel(){
+    public function lista(){
         return $this->morphTo();
     }
 

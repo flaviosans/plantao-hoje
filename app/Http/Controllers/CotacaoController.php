@@ -83,7 +83,7 @@ class CotacaoController extends Controller
                 'produto_id'=> $cada->produto_id,
                 'quantidade'=> $cada->quantidade
             ]);
-            $item->user_id = $cotacao->user_id;
+            //$item->user_id = $cotacao->user_id;
             $cotacao->item()->save($item);
 //            $item->save();
         }

@@ -45,59 +45,79 @@
     },
     list:function(){
       cart.load();
-      var container = document.getElementById("cart-list"),
-        item = null, part = null;
-      container.innerHTML = "";
+      var cartList = document.getElementById("cart-list"),
+      checkoutForm = document.getElementById('checkout-form'),
+      tableRow = null, inputQty = null;
+      cartList.innerHTML = "";
 
       if(cart.products.length === 0){
-        item = document.createElement("div");
-        item.innerHTML = "Cart is empty";
-        container.appendChild(item);
+        tableRow = document.createElement("tr");
+        tableRow.innerHTML = "Cart is empty";
+        cartList.appendChild(tableRow);
       }
       else {
-        var total = 0; subtotal = 0;
+        var total = 0, subtotal = 0, counter = 1;
         cart.products.forEach(product => {
-          item = document.createElement("div");
-          item.classList.add("c-item");
+          tableRow = document.createElement("tr");
 
-          part = document.createElement("input");
-          part.type = "number";
-          part.value = product['quantidade'];
-          part.dataset.id = product['id'];
-          part.classList.add("c-qty");
-          part.addEventListener("change", cart.change);
-          item.appendChild(part);
+          var order = document.createElement("th");
+          order.innerHTML = counter++;
+          tableRow.appendChild(order);
 
-          part = document.createElement("span");
-          part.innerHTML = product['nome'];
-          part.classList.add("c-name");
-          item.appendChild(part);
+          var idd = document.createElement("td");
+          idd.innerHTML = product["id"];
+          tableRow.appendChild(idd)
+
+          var name = document.createElement("td");
+          name.innerHTML = product['nome'];
+          tableRow.appendChild(name);
+
+          var price = document.createElement("td");
+          price.innerHTML = product['preco_promocao'];
+          tableRow.appendChild(price);
+
+          var qty = document.createElement("td");
+
+          var inputQty = document.createElement("input");
+
+          inputQty.type = "number";
+          inputQty.name = "pedido[item][][quantidade]";
+          inputQty.value = product['quantidade'];
+          inputQty.dataset.id = product['id'];
+          inputQty.addEventListener("change", cart.change);
+          qty.appendChild(inputQty);
+          tableRow.appendChild(qty);
+
+          prodInput = document.createElement("input");
+          prodInput.type = "hidden";
+          prodInput.name = "pedido[id][][quantidade]";
+          prodInput.value = product["id"];
+          tableRow.appendChild(prodInput);
 
           // subtotal
           subtotal = product['quantidade'] * product['preco_promocao'];
           total += subtotal;
-          container.appendChild(item);
-
+          cartList.appendChild(tableRow);
         });
 
-        part = document.createElement("div");
-        part.innerHTML = this.items();
-        container.appendChild(part);
+        inputQty = document.createElement("div");
+        inputQty.innerHTML = this.items();
+        cartList.appendChild(inputQty);
 
         // Empty buttons
-        item = document.createElement("input");
-        item.type = "button";
-        item.value = "Empty";
-        item.addEventListener("click", cart.reset);
-        item.classList.add("c-empty");
-        container.appendChild(item);
+        tableRow = document.createElement("input");
+        tableRow.type = "button";
+        tableRow.value = "Empty";
+        tableRow.addEventListener("click", cart.reset);
+        tableRow.classList.add("c-empty");
+        cartList.appendChild(tableRow);
 
-        item = document.createElement("input");
-        item.type = "button";
-        item.value = `Checkout - R$${total}`;
-        item.addEventListener("click", cart.checkout);
-        item.classList.add("c-checkout");
-        container.appendChild(item);
+        tableRow = document.createElement("input");
+        tableRow.type = "button";
+        tableRow.value = `Checkout - R$ ${total}`;
+        tableRow.addEventListener("click", cart.checkout);
+        tableRow.classList.add("c-checkout");
+        cartList.appendChild(tableRow);
       }
     },
     change:function(){
@@ -120,18 +140,20 @@
     },
     checkout:function(){
       var pedido = {};
-      var cliente = document.getElementById('customer-data');
-      pedido.ofertas = cart.products;
-      pedido.cliente = formToJSON(cliente);
+      var endereco = document.getElementById('novo-endereco');
+      pedido.itens = cart.products;
+      pedido.endereco = formToJSON(endereco);
       cart.request(
-          'http://localhost:8000/api/checkout',
+          'http://localhost:8000/checkout',
           'post',
-          function(){console.log("REquisição pronta!")},
+          function(){console.log("Requisição pronta!")},
           pedido,
           function () {console.log('Aguardando resposta')});
       },
     request:function(action, method, doneCallback, data, waitCallback = console.log, fallback = console.log){
       let request = new XMLHttpRequest();
+      let token = document.getElementsByName('_token')[0].value;
+
       request.onreadystatechange = function () {
         if (request.readyState === request.DONE) {
           if (request.status === 200 || request.status === 201)
@@ -142,29 +164,32 @@
         }
       }
       request.open(method, action, true);
+      request.setRequestHeader('X-CSRF-TOKEN', token);
       request.setRequestHeader('Content-type', 'application/json');
       request.send(JSON.stringify(data));
     }
   };
 
-const formToJSON = elements => [].reduce.call(elements, (data, element) => {
-  //TODO: Recursão para não haver limite de profundidade
-
-    let keys = element.name.split(".");
-    if (keys.length === 1) {
-      data[keys[0]] = element.value;
-    } else if (keys.length === 2) {
-      data[keys[0]] = data[keys[0]] || {};
-      data[keys[0]][keys[1]] = element.value;
-    } else {
-      data[keys[0]] = data[keys[0]] || {};
-      data[keys[0]][keys[1]] = data[keys[0]][keys[1]] || {};
-      data[keys[0]][keys[1]][keys[2]] = element.value;
+const formToJSON = elements => {
+  return [].reduce.call(elements, (data, element) => {
+    //TODO: Recursão para não haver limite de profundidade
+    if (isTextField(element) || isChecked(element)) {
+      let keys = element.name.split(".");
+      if (keys.length === 1) {
+        data[keys[0]] = element.value;
+      } else if (keys.length === 2) {
+        data[keys[0]] = data[keys[0]] || {};
+        data[keys[0]][keys[1]] = element.value;
+      } else {
+        data[keys[0]] = data[keys[0]] || {};
+        data[keys[0]][keys[1]] = data[keys[0]][keys[1]] || {};
+        data[keys[0]][keys[1]][keys[2]] = element.value;
+      }
     }
 
-
-  return data;
-}, {});
+    return data;
+  }, {});
+};
 
 const isFormField = element => {
   return !!element && element.name && ['TEXTAREA', 'INPUT'].includes(element.nodeName);
@@ -203,3 +228,6 @@ const isOptional = element => {
   return Array.from(element.classList).includes('ea-optional-field');
 }
 
+const isTextField = element => {
+  return ['text', 'hidden'].includes(element.type) || element.nodeName === 'TEXTAREA';
+}

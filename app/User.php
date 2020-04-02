@@ -38,4 +38,8 @@ class User extends Authenticatable
     public function loja(){
         return $this->hasMany('\App\Loja');
     }
+
+    public function pedido(){
+        return $this->hasMany('\App\Pedido');
+    }
 }

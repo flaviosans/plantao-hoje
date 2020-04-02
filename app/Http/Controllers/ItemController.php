@@ -21,21 +21,12 @@ class ItemController extends Controller
      */
     public function index($id = null)
     {
-
-        if($id == null){
-            $dados = array(
-                'itens'=> Loja::find(session('loja'))->item()->paginate(10),
-                'titulo'=> 'Cuidado que esse método tá todo zuado, por favor'
-            );
-        }
-        else{
-            $cotacao = Cotacao::find($id);
-            $dados = array(
-                'itens'=> $cotacao->item()->paginate(10),
-                'cotacao'=> $cotacao,
-                'titulo'=> $cotacao->titulo .' - Itens'
-            );
-    }
+        $cotacao = Cotacao::find($id);
+        $dados = array(
+            'itens'=> $cotacao->item()->paginate(10),
+            'cotacao'=> $cotacao,
+            'titulo'=> $cotacao->titulo .' - Itens'
+        );
         return view('admin.itens.itens', $dados);
     }
 

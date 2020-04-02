@@ -4,10 +4,14 @@ namespace App;
 
 use App\Library\Number;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Oferta extends Model
 {
-    protected $fillable = ['produto_id', 'preco_normal', 'preco_promocao', 'quantidade'];
+    use SoftDeletes;
+    protected $fillable = [
+        'produto_id', 'preco_normal', 'preco_promocao', 'quantidade'
+    ];
 
     public function campanha(){
         return $this->belongsTo('\App\Campanha');
@@ -17,7 +21,7 @@ class Oferta extends Model
         return $this->belongsTo('\App\Produto');
     }
 
-    public function setPrecoNormalAttribute($value){
+/*    public function setPrecoNormalAttribute($value){
         $this->attributes['preco_normal'] = Number::toDouble($value);
     }
 
@@ -35,5 +39,5 @@ class Oferta extends Model
 
     public function getPrecoPromocaoRawAttribute(){
         return $this->attributes['preco_promocao'];
-    }
+    }*/
 }

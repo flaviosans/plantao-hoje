@@ -5,7 +5,7 @@
         @endslot
         @slot('conteudo')
             @if(isset($item))
-                <form action="{{route('cotacoes.itens.update', [$item->petivel->id, $item->id] )}}" method="POST">
+                <form action="{{route('cotacoes.itens.update', [$item->lista->id, $item->id] )}}" method="POST">
                     {{ method_field('PUT') }}
             @else
                 <form action="{{route('cotacoes.itens.store', $cotacao->id)}}" method="post">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group">
                     <label for="preco_promocao">Quantidade</label>
-                    <input class="form-control" type="text" name="quantidade" value="{{$item->quantidade or old('quantidade')}}" {{$item->petivel->cotacao_id ? 'disabled' : ''}}>
+                    <input class="form-control" type="text" name="quantidade" value="{{$item->quantidade or old('quantidade')}}" {{$item->lista->cotacao_id ? 'disabled' : ''}}>
                 </div>
                 <div class="form-group">
                     <input class="form-control" type="submit" value="Salvar!">

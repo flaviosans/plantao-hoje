@@ -37,6 +37,7 @@
                                         <form action="#" method="post" onsubmit="cart.add(event, this)">
                                             <fieldset>
                                                 <input type="hidden" name="id" value="{{$oferta->id}}" />
+                                                <input type="hidden" name="produto_id" value="{{$oferta->produto->id}}" />
                                                 <input type="hidden" name="nome" value="{{$oferta->produto->nome}}" />
                                                 <input type="hidden" name="preco_normal" value="{{$oferta->preco_normal}}" />
                                                 <input type="hidden" name="preco_promocao" value="{{$oferta->preco_promocao}}" />

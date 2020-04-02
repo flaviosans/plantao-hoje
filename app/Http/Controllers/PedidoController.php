@@ -14,7 +14,11 @@ class PedidoController extends Controller
      */
     public function index()
     {
-        //
+        $dados = [
+            'pedidos' => Pedido::orderBy('created_at', 'desc')->paginate(10)
+        ];
+
+        return view('admin.pedidos.pedidos', $dados);
     }
 
     /**
@@ -35,7 +39,8 @@ class PedidoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pedido = new Pedido();
+        $pedido->fill($request->all());
     }
 
     /**
@@ -46,7 +51,12 @@ class PedidoController extends Controller
      */
     public function show(Pedido $pedido)
     {
-        //
+        $dados = [
+            'pedido' => $pedido,
+            'endereco' => $pedido->endereco()->first()
+        ];
+
+        return view('admin.pedidos.view', $dados);
     }
 
     /**

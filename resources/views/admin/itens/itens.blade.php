@@ -94,8 +94,8 @@
                         @endif
                         <td>
                             <a href="#" onclick="event.preventDefault(); document.getElementById('delete-{{$cada->id}}').submit();">Apagar</a> |
-                            <a href="{{route('cotacoes.itens.edit', [$cada->petivel->id, $cada->id])}}">Editar</a>
-                            <form id="delete-{{$cada->id}}" action="{{route('cotacoes.itens.destroy', [$cada->petivel->id, $cada->id])}}" method="POST">
+                            <a href="{{route('cotacoes.itens.edit', [$cada->lista->id, $cada->id])}}">Editar</a>
+                            <form id="delete-{{$cada->id}}" action="{{route('cotacoes.itens.destroy', [$cada->lista->id, $cada->id])}}" method="POST">
                                 {{method_field('DELETE')}}
                                 {{csrf_field()}}
                             </form>

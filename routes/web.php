@@ -14,9 +14,15 @@
 Route::get('/', 'FrontController@index')->name('index');
 Route::get('/busca', 'FrontController@busca')->name('busca');
 
-Route::get('/itens/', 'FrontController@itens')->name('itens');
-Route::get('/ofertas/', 'FrontController@ofertas')->name('ofertas');
-Route::get('/checkout/', 'FrontController@checkout')->name('checkout')->middleware('auth');
+Route::get('/itens', 'FrontController@itens')->name('itens');
+Route::get('/ofertas', 'FrontController@ofertas')->name('ofertas');
+
+Route::group(['middleware' => 'auth'], function(){
+    Route::post('/checkout', 'FrontController@pedido')->name('store');
+    Route::get('/checkout', 'FrontController@checkout')->name('checkout');
+    Route::resource('lojas', 'LojaController');
+    Route::get('/admin/session/setloja/{id}','HomeController@setloja')->name('setLoja');
+});
 
 Auth::routes();
 
@@ -31,20 +37,17 @@ Route::group(['prefix'=>'admin', 'middleware'=> ['auth', 'checalojaselecionada']
     Route::post('cotacoes/{id}/publicar', 'CotacaoController@publicar')->name('cotacoes.publicar');
     Route::get('cotacoes/{id}/responder', 'CotacaoController@responder')->name('cotacoes.responder');
     Route::resource('banners', 'BannerController');
-    Route::resource('cotacoes', 'CotacaoController');
     Route::resource('campanhas', 'CampanhaController');
     Route::resource('campanhas.ofertas', 'OfertaController');
-    Route::resource('ofertas', 'OfertaController');
+    Route::resource('categorias', 'CategoriaController');
+    Route::resource('cotacoes', 'CotacaoController');
     Route::resource('cotacoes.itens', 'ItemController');
+    Route::resource('enderecos', 'EnderecoController');
     Route::resource('itens', 'ItemController');
+    route::resource('marcas', 'MarcaController');
+    Route::resource('ofertas', 'OfertaController');
+    Route::resource('pedidos', 'PedidoController');
     Route::resource('produtos', 'ProdutoController');
     route::resource('tags','TagController');
-    route::resource('marcas', 'MarcaController');
     route::resource('tokens', 'TokenController');
-    Route::get('/session/setloja/{id}','HomeController@setloja')->name('setLoja');
-    Route::resource('categorias', 'CategoriaController');
-    Route::resource('enderecos', 'EnderecoController');
 });
-
-Route::resource('lojas', 'LojaController')->middleware('auth');
-

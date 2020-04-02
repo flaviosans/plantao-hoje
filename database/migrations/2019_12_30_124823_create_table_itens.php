@@ -16,10 +16,10 @@ class CreateTableItens extends Migration
         Schema::create('itens', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('produto_id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('petivel_id');
-            $table->string('petivel_type');
-            $table->float('preco')->default(0.0);
+            $table->unsignedBigInteger('lista_id');
+            $table->string('lista_type');
+            $table->float('preco_normal')->default(0.0);
+            $table->float('preco_promocao')->default(0.0);
             $table->float('quantidade')->default(0.0);
             $table->string('observacao')->nullable();
             $table->timestamps();

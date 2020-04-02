@@ -3,10 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Banner;
+use App\Endereco;
+use App\Item;
 use App\Marca;
 use App\Oferta;
+use App\Pedido;
 use App\Produto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
@@ -34,6 +38,34 @@ class FrontController extends Controller
 
     public function checkout(Request $request){
         return view('front.checkout');
+    }
+
+    public function pedido(Request $request)
+    {
+        $pedido = new Pedido();
+        $itens = [];
+        $id_endereco = $request->input('endereco.endereco_id');
+        Auth::user()->pedido()->save($pedido);
+
+        if($id_endereco == 0){
+            $endereco = new Endereco();
+            $endereco->fill($request->json('endereco'));
+            $pedido->endereco()->save($endereco);
+            Auth::user()->endereco()->save($endereco);
+        } else{
+            $endereco = Auth::user()->endereco()->find($id_endereco)->get();
+            $pedido->endereco()->save($endereco);
+        }
+
+        foreach ($request->json('itens') as $cada) {
+            $item = new Item();
+            $item->fill($cada);
+            $itens[] = $item;
+        }
+
+        $pedido->item()->saveMany($itens);
+
+        return $pedido->toJson();
     }
 
     public function ofertas(){

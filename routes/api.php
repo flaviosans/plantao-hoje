@@ -1,5 +1,4 @@
 <?php
-
 use App\Produto;
 use App\User;
 use Illuminate\Http\Request;
@@ -22,6 +21,8 @@ use Illuminate\Http\Request;
 Route::get('buscar/produtos/', function(Request $request){
     return Produto::where('nome', 'like', '%' . $request->q . '%')->orWhere('codigo_barras', '=', $request->q)->get();
 });
+
+Route::post('pedido', 'FrontController@pedido')->middleware('auth');
 
 Route::post('checkout', function(Request $request){
     $json = $request->json()->all();

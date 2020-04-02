@@ -17,7 +17,7 @@ class CreateTableCampanhas extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('loja_id');
             $table->string('titulo');
-            $table->string('descricao');
+            $table->string('descricao')->nullable();
             $table->timestamp('validade');
             $table->timestamps();
             $table->softDeletes();
