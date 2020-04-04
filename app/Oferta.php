@@ -20,24 +20,4 @@ class Oferta extends Model
     public function produto(){
         return $this->belongsTo('\App\Produto');
     }
-
-/*    public function setPrecoNormalAttribute($value){
-        $this->attributes['preco_normal'] = Number::toDouble($value);
-    }
-
-    public function getPrecoNormalAttribute(){
-        return Number::toCurrency($this->attributes['preco_normal']);
-    }
-
-    public function setPrecoPromocaoAttribute($value){
-        $this->attributes['preco_promocao'] = Number::toDouble($value);
-    }
-
-    public function getPrecoPromocaoAttribute(){
-        return Number::toCurrency($this->attributes['preco_promocao']);
-    }
-
-    public function getPrecoPromocaoRawAttribute(){
-        return $this->attributes['preco_promocao'];
-    }*/
 }

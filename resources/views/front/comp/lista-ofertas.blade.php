@@ -13,8 +13,8 @@
                                 <div class="snipcart-item block" >
                                     <div class="snipcart-thumb">
                                         <a href="products.html">
-                                            @if($oferta->produto->imagem()->first() != null)
-                                                <img src="{{$oferta->produto->imagem()->first()->caminho}}" alt="" width="150" height="150">
+                                            @if($oferta->imagem()->first() != null)
+                                                <img src="{{$oferta->produto->first()->caminho}}" alt="" width="150" height="150">
                                             @endif
                                         </a>
                                         <p>{{$oferta->produto->nome}}</p>

@@ -1,22 +1,10 @@
-<!-- Default box -->
-<div class="box">
-    <div class="box-header with-border">
-        <h3 class="box-title">{{$cabecalho}}</h3>
-
-        <div class="box-tools pull-right">
-            <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
-                <i class="fa fa-minus"></i></button>
-            <button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                <i class="fa fa-times"></i></button>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="main-card mb-3 card">
+            <div class="card-body"><h5 class="card-title">{{$cabecalho}}</h5>
+                {{$conteudo}}
+            </div>
         </div>
     </div>
-    <div class="box-body">
-        {{$conteudo}}
-    </div>
-    <!-- /.box-body -->
-    <div class="box-footer">
-        {{$rodape   }}
-    </div>
-    <!-- /.box-footer-->
 </div>
-<!-- /.box -->
+{{$rodape}}

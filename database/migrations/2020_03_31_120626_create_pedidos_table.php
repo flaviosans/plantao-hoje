@@ -17,7 +17,7 @@ class CreatePedidosTable extends Migration
             $table->increments('id');
             $table->unsignedBigInteger('user_id');
             $table->string('titulo')->nullable();
-            $table->string('status')->default('RASCUNHO');
+            $table->string('status')->default('NOVO');
             $table->string('obs')->nullable();
             $table->softDeletes();
             $table->timestamps();

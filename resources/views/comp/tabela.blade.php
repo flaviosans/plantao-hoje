@@ -1,10 +1,12 @@
-        <table id="tabela" class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    {{$cabecalho}}
-                </tr>
-            </thead>
-            <tbody>
-                {{$conteudo}}
-            </tbody>
-        </table>
+<div class="card-body">
+    <table id="tabela" class="mb-0 table table-bordered">
+        <thead>
+        <tr>
+            {{$cabecalho}}
+        </tr>
+        </thead>
+        <tbody>
+        {{$conteudo}}
+        </tbody>
+    </table>
+</div>

@@ -23,10 +23,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('lojas', 'LojaController');
     Route::get('/admin/session/setloja/{id}','HomeController@setloja')->name('setLoja');
 });
-
+Route::get('layout', 'FrontController@layout');
 Auth::routes();
 
-Route::group(['prefix'=>'admin', 'middleware'=> ['auth', 'checalojaselecionada']], function (){
+Route::group(['prefix'=>'admin', 'middleware'=> ['auth']], function (){
     Route::get('/', 'HomeController@index');
     Route::get('dashboard', 'HomeController@dashboard')->name('home.dashboard');
     Route::get('profile', 'HomeController@profile');

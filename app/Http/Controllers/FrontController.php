@@ -18,7 +18,7 @@ class FrontController extends Controller
 {
     public function index(){
         $dados = array(
-            'ofertas'=> Oferta::orderBy('created_at', 'desc')->take(6)->get(),
+            'ofertas'=> Produto::orderBy('created_at', 'desc')->take(6)->get(),
             'marcas'=> Marca::all(),
             'bannerTopo'=> Banner::where('tipo', 1)->get(),
             'bannerMeio'=> Banner::where('tipo', 2)->get()
@@ -44,7 +44,7 @@ class FrontController extends Controller
 
     public function pedido(Request $request)
     {
-        $pedido = new Cotacao();
+        $pedido = new Pedido();
         $itens = [];
         $id_endereco = $request->input('endereco.endereco_id');
         $id_telefone = $request->input('telefone.telefone_id');
@@ -87,5 +87,14 @@ class FrontController extends Controller
         ];
 
         return view('front.ofertas', $dados);
+    }
+
+    public function layout(){
+        $dados = [
+            'titulo' => 'Administração',
+            'descricao' => 'Essa é a página administrativa'
+        ];
+
+        return view('templates.architet.index', $dados);
     }
 }

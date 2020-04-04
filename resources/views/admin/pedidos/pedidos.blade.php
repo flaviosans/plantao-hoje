@@ -31,7 +31,7 @@
                         </td>
                         <td>{{$cada->validade}}</td>
                         <td>
-                            <a href="{{route('pedidos.show', $cada->id)}}">Ver cotação</a> |
+                            <a class="mb-2 mr-2 btn btn-primary" href="{{route('pedidos.show', $cada->id)}}">Ver pedido</a> |
                             <a href="#" onclick="event.preventDefault(); document.getElementById('delete-{{$cada->id}}').submit();">Apagar</a> |
                             <a href="{{route('pedidos.edit', $cada->id)}}">Editar</a> |
                             <a href="#" onclick="event.preventDefault(); document.getElementById('publicar-{{$cada->id}}').submit();"> Publicar</a> |

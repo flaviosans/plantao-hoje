@@ -19,6 +19,10 @@ class Produto extends Model
         return $this->item->count();
     }
 
+    public function getProdutoAttribute(){
+        return $this;
+    }
+
     public function possui($categoria){
         return in_array($categoria->id, $this->categoria->pluck('id')->toArray());
     }
@@ -30,7 +34,11 @@ class Produto extends Model
     public function imagem(){
         return $this->morphMany('\App\Imagem', 'dono');
     }
-    
+
+    public function item(){
+        return $this->hasMany('\App\Item');
+    }
+
     public function loja(){
         return $this->belongsTo('\App\Loja');
     }
@@ -39,12 +47,12 @@ class Produto extends Model
         return $this->belongsTo('\App\Marca');
     }
 
-    public function oferta(){
-        return $this->hasMany('\App\Oferta');
+    public function medida(){
+        return $this->belongsTo('\App\Medida');
     }
 
-    public function item(){
-        return $this->hasMany('\App\Item');
+    public function oferta(){
+        return $this->hasMany('\App\Oferta');
     }
 
     public function tag(){
@@ -53,10 +61,6 @@ class Produto extends Model
 
     public function token(){
         return $this->morphToMany('\App\Token', 'tokenable');
-    }
-
-    public function medida(){
-        return $this->belongsTo('\App\Medida');
     }
 
     public function getTagsAttribute(){
