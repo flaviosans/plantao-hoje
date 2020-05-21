@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Banner;
 use App\Cotacao;
 use App\Endereco;
+use App\Http\Services\PedidoService;
 use App\Item;
 use App\Marca;
 use App\Oferta;
@@ -17,6 +18,12 @@ use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
+    protected $pedido_service;
+
+    public function __construct(PedidoService $pedido_service){
+        $this->pedido_service = $pedido_service;
+    }
+
     public function index(){
         $dados = array(
             'ofertas'=> Oferta::orderBy('created_at', 'desc')->take(6)->get(),
@@ -49,30 +56,7 @@ class FrontController extends Controller
 
     public function pedido(Request $request)
     {
-        $pedido = new Pedido();
-        $id_endereco = $request->input('endereco.endereco_id');
-        $id_telefone = $request->input('telefone.telefone_id');
-        Auth::user()->pedido()->save($pedido);
-
-        if($id_endereco == 0)
-        {
-            $endereco = Endereco::create($request->json('endereco'));
-            $pedido->endereco()->save($endereco);
-            Auth::user()->endereco()->save($endereco);
-        } else
-        {
-            $endereco = Auth::user()->endereco()->where('id', $id_endereco)->first();
-            $pedido->endereco()->save($endereco);
-        }
-
-        if($id_telefone == 0){
-            $telefone = Telefone::create($request->json('telefone'));
-            $pedido->telefone()->save($telefone);
-            Auth::user()->telefone()->save($telefone);
-        } else{
-            $telefone = Auth::user()->telefone()->where('id', $id_telefone)->first();
-            $pedido->telefone()->save($telefone);
-        }
+        $pedido = $this->pedido_service->create($request);
 
         $pedido->item()->createMany($request->json('itens'));
 
@@ -94,6 +78,7 @@ class FrontController extends Controller
 
         return "sucesso";
     }
+
     public function ofertas(){
         $dados = [
             'ofertas'=> Oferta::all()
