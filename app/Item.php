@@ -21,17 +21,6 @@ class Item extends Model
         return $this->belongsTo('\App\Produto');
     }
 
-/*    public function setPrecoAttribute($value){
-
-        $this->attributes['preco'] = Number::toDouble($value);
-    }
-
-    public function getPrecoAttribute(){
-        if(!isset($this->attributes['preco']))
-            $this->attributes['preco'] = Number::toCurrency(0);
-        return Number::toCurrency($this->attributes['preco']);
-    }*/
-
     public static function por_cotacao($cotacao_id){
         return self::where('cotacao_id', '=', $cotacao_id)->orderBy('id', 'desc');
     }
