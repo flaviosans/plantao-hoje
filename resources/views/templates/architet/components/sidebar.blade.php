@@ -115,9 +115,9 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="{{route('cotacoes.recebidas')}}">
+                            <a href="{{route('cotacoes.publicadas')}}">
                                 <i class="metismenu-icon"></i>
-                                Cotações recebidas
+                                Cotações publicadas
                             </a>
                         </li>
                         <li>
@@ -237,6 +237,12 @@
                             <a href="{{route('produtos.create')}}">
                                 <i class="metismenu-icon"></i>
                                 Novo produto
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{route('produtos.importar')}}">
+                                <i class="metismenu-icon"></i>
+                                Importar produtos
                             </a>
                         </li>
                     </ul>

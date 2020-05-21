@@ -140,6 +140,9 @@ class ProdutoController extends Controller
         return redirect()->route('produtos.index');
     }
 
+    public function importar(){
+        return view('admin.produtos.importar');
+    }
     /**
      * Remove the specified resource from storage.
      *

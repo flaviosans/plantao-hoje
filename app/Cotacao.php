@@ -21,6 +21,10 @@ class Cotacao extends Model
         return $this->morphMany('\App\Item', 'lista');
     }
 
+    public function telefone(){
+        return $this->morphToMany('\App\Telefone', 'telefonavel');
+    }
+
     public function user(){
         return $this->belongsTo('\App\User');
     }

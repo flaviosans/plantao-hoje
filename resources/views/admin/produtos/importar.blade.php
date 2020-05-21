@@ -1,0 +1,13 @@
+@extends('layouts.admin.app')
+@section('content')
+    @component('comp.box')
+        @slot('cabecalho')
+            Importador
+        @endslot
+        @slot('conteudo')
+            Conteudo
+        @endslot
+        @slot('rodape')
+        @endslot
+    @endcomponent
+@endsection

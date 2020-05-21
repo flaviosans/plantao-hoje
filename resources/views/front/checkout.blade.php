@@ -23,8 +23,9 @@
                         <th scope="col">Quantidade</th>
                     </tr>
                     </thead>
+                    <tbody id="cart-list">
 
-                        <tbody id="cart-list"></tbody>
+                    </tbody>
 
                 </table>
 
@@ -36,7 +37,11 @@
                     <br>
                     <div class="form-check">
                         @foreach(Auth::user()->telefone()->get() as $cada)
+                        <p>
                             <input class="form-check-input"
+                                   @if($loop->first)
+                                   checked
+                                   @endif
                                    type="radio"
                                    name="telefone_id"
                                    id="telefone_id{{$cada->id}}"
@@ -44,6 +49,7 @@
                             <label class="form-check-label" for="telefone_id{{$cada->id}}">
                                 {{$cada->descricao or $cada->numero}}
                             </label>
+                        </p>
                         @endforeach
                     </div>
                     <div class="form-group">
@@ -51,38 +57,41 @@
                                type="radio"
                                name="telefone_id"
                                id="telefone_id"
-                               @if(Auth::user()->telefone()->count() == 0)
+                               @if($user->telefone()->count() == 0)
                                checked
                                @endif
                                value="0">
                         <label class="form-check-label" for="numero">
                             Novo telefone: <input type="text" id="numero" name="numero" value="{{old('novo-telefone') or ''}}">
                         </label>
+
                     </div>
                 </form>
                 <form id="novo-endereco">
                     <h3>Endereço de entrega:</h3>
                     <br>
                     <div class="form-check">
-                        @foreach(Auth::user()->endereco()->get() as $cada)
+                        @foreach($user->endereco()->get() as $cada)
+                        <p>
                             <input class="form-check-input"
                                    type="radio"
                                    name="endereco_id"
                                    id="endereco_id{{$cada->id}}"
                                    @if($loop->first)
-                                           checked
+                                   checked
                                    @endif
                                    value="{{$cada->id}}">
                             <label class="form-check-label" for="endereco_id{{$cada->id}}">
                                 {{$cada->descricao}}
                             </label>
+                        </p>
                         @endforeach
                         <input class="form-check-input"
                                type="radio"
                                name="endereco_id"
                                id="radio-novo-endereco"
 
-                               @if(Auth::user()->endereco()->count() == 0)
+                               @if($user->endereco()->count() == 0)
                                        checked
                                @endif
                                value="0">
@@ -90,7 +99,6 @@
                             Inserir Novo endereço
                         </label>
                     </div>
-
                         <div class="form-group">
                             <label for="nome">Descrição do endereço:</label>
                             <input type="text" class="form-control" id="descricao" name="descricao" value="{{old('descricao') or ''}}">
@@ -109,8 +117,7 @@
                             <label for="nome">CEP:</label>
                             <input type="text" class="form-control" id="cep" name="cep" aria-describedby="bairroHelp" value="{{old('cep') or ''}}">
                         </div>
-                        <button type="submit" class="btn btn-primary">Gravar Endereço</button>
-
+                        <button onclick="event.preventDefault(); cart.checkout()" class="btn btn-primary">Gravar Endereço</button>
                 </form>
             </div>
         </div>

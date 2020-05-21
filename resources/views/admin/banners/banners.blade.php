@@ -11,7 +11,6 @@
                     <tr>
                         <th>#</th>
                         <th>Nome</th>
-                        <th>Marca</th>
                         <th>Imagem</th>
                         <th>Ações</th>
                     </tr>
@@ -21,7 +20,6 @@
                         <tr>
                             <td>{{$cada->id}}</td>
                             <td>{{$cada->nome}}</td>
-                            <td>{{$cada->marca != null ? $cada->marca->nome:'Sem Marca'}}</td>
                             <td>
                             @foreach($cada->imagem as $imagem)
                                 <img src="{{$imagem->caminho}}" alt="{{$imagem->legenda}}" width="100" height="39">

@@ -111,8 +111,6 @@ class CotacaoController extends Controller
         $cotacao->user_id = Auth::user()->id;
         $cotacao->save();
 
-
-
         $dados = [
             'titulo' => $cotacao->titulo,
             'cotacao' => $cotacao,
@@ -136,6 +134,14 @@ class CotacaoController extends Controller
         Message::info('Cotação publicada com sucesso!');
 
         return redirect()->back();
+    }
+
+    public function show(Cotacao $cotacao){
+        $dados = [
+            'cotacao' => $cotacao,
+        ];
+
+        return view('admin.cotacoes.view', $dados);
     }
 
     /**

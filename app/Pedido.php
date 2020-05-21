@@ -17,8 +17,8 @@ class Pedido extends Model
         return $this->morphToMany('\App\Endereco', 'enderecavel');
     }
 
-    public function item(){
-        return $this->morphMany('\App\Item', 'lista');
+    public function oferta(){
+        return $this->hasMany('\App\Oferta');
     }
 
     public function telefone(){
@@ -29,4 +29,7 @@ class Pedido extends Model
         return $this->belongsTo('\App\User');
     }
 
+    public function item(){
+        return $this->morphMany('\App\Item', 'lista');
+    }
 }

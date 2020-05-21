@@ -31,9 +31,9 @@
                         </td>
                         <td>{{$cada->validade}}</td>
                         <td>
-                            <a href="/admin/cotacoes/{{$cada->id}}/itens">Ver cotação</a> |
-                            <a href="#" onclick="event.preventDefault(); document.getElementById('delete-{{$cada->id}}').submit();">Apagar</a> |
-                            <a href="{{route('cotacoes.edit', $cada->id)}}">Editar</a> |
+                            <a href="{{route('cotacoes.show', $cada->id)}}">Ver cotação</a> |
+{{--                            <a href="#" onclick="event.preventDefault(); document.getElementById('delete-{{$cada->id}}').submit();">Apagar</a> |--}}
+{{--                            <a href="{{route('cotacoes.edit', $cada->id)}}">Editar</a> |--}}
                             <a href="{{route('cotacoes.responder', $cada->id)}}"> Responder Campanha</a> |
                             <a href="{{route('cotacoes.respostas', $cada->id)}}"> Ver respostas</a> |
                             <a href="#" onclick="event.preventDefault(); document.getElementById('publicar-{{$cada->id}}').submit();"> Publicar</a> |

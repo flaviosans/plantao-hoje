@@ -60,7 +60,7 @@
         cart.products.forEach(product => {
           tableRow = document.createElement("tr");
 
-          var order = document.createElement("th");
+          var order = document.createElement("tr");
           order.innerHTML = counter++;
           tableRow.appendChild(order);
 
@@ -111,13 +111,6 @@
         tableRow.addEventListener("click", cart.reset);
         tableRow.classList.add("c-empty");
         cartList.appendChild(tableRow);
-
-        tableRow = document.createElement("input");
-        tableRow.type = "button";
-        tableRow.value = `Checkout - R$ ${total}`;
-        tableRow.addEventListener("click", cart.checkout);
-        tableRow.classList.add("c-checkout");
-        cartList.appendChild(tableRow);
       }
     },
     change:function(){
@@ -146,7 +139,7 @@
       pedido.endereco = formToJSON(endereco);
       pedido.telefone = formToJSON(telefone);
       cart.request(
-          'http://localhost:8000/checkout',
+          'http://localhost:8000/pedido',
           'post',
           function(){console.log("Requisição pronta!")},
           pedido,

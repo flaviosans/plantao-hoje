@@ -20,8 +20,7 @@ class Imagem extends Model
             $obj->save();
         }
         $imagem = new Imagem();
-        $tipo = Util::extrairTipo($obj);
-        $imagem->caminho = File::upload($arquivo, $tipo);
+        $imagem->caminho = File::upload($arquivo, $obj);
         $obj->imagem()->save($imagem);
 
     }

@@ -59,6 +59,13 @@ class PedidoController extends Controller
         return view('admin.pedidos.view', $dados);
     }
 
+    public function print(Pedido $pedido){
+        $dados = [
+            'pedido' => $pedido
+        ];
+
+        return view('admin.pedidos.print', $dados);
+    }
     /**
      * Show the form for editing the specified resource.
      *

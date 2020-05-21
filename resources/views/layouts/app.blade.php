@@ -13,10 +13,7 @@
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- font-awesome icons -->
     <link href="/css/font-awesome.css" rel="stylesheet">
-    <!-- //font-awesome icons -->
-    <!-- BRCart -->
-    <link href="/css/brcart.css" rel="stylesheet">
-    <!-- //BRCart -->
+    <!-- // font-awesome icons -->
     <!-- js -->
     <script src="/js/jquery-1.11.1.min.js"></script>
     <!-- //js -->

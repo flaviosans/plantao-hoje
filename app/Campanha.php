@@ -26,6 +26,10 @@ class Campanha extends Model
         return $this->morphMany('\App\Item', 'lista');
     }
 
+    public function oferta(){
+        return $this->belongsTo('\App\Oferta');
+    }
+
     protected static function boot(){
         parent::boot();
         static::deleting(function($campanha){

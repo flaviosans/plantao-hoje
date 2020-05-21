@@ -10,6 +10,7 @@ use App\Marca;
 use App\Oferta;
 use App\Pedido;
 use App\Produto;
+use App\Status;
 use App\Telefone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,7 @@ class FrontController extends Controller
 {
     public function index(){
         $dados = array(
-            'ofertas'=> Produto::orderBy('created_at', 'desc')->take(6)->get(),
+            'ofertas'=> Oferta::orderBy('created_at', 'desc')->take(6)->get(),
             'marcas'=> Marca::all(),
             'bannerTopo'=> Banner::where('tipo', 1)->get(),
             'bannerMeio'=> Banner::where('tipo', 2)->get()
@@ -39,30 +40,33 @@ class FrontController extends Controller
     }
 
     public function checkout(Request $request){
-        return view('front.checkout');
+        $dados = [
+            'user' => Auth::user()
+        ];
+
+        return view('front.checkout', $dados);
     }
 
     public function pedido(Request $request)
     {
         $pedido = new Pedido();
-        $itens = [];
         $id_endereco = $request->input('endereco.endereco_id');
         $id_telefone = $request->input('telefone.telefone_id');
         Auth::user()->pedido()->save($pedido);
 
-        if($id_endereco == 0){
-            $endereco = new Endereco();
-            $endereco->fill($request->json('endereco'));
+        if($id_endereco == 0)
+        {
+            $endereco = Endereco::create($request->json('endereco'));
             $pedido->endereco()->save($endereco);
             Auth::user()->endereco()->save($endereco);
-        } else{
+        } else
+        {
             $endereco = Auth::user()->endereco()->where('id', $id_endereco)->first();
             $pedido->endereco()->save($endereco);
         }
 
         if($id_telefone == 0){
-            $telefone = new Telefone();
-            $telefone->fill($request->json('telefone'));
+            $telefone = Telefone::create($request->json('telefone'));
             $pedido->telefone()->save($telefone);
             Auth::user()->telefone()->save($telefone);
         } else{
@@ -70,17 +74,20 @@ class FrontController extends Controller
             $pedido->telefone()->save($telefone);
         }
 
-        foreach ($request->json('itens') as $cada) {
-            $item = new Item();
-            $item->fill($cada);
-            $itens[] = $item;
-        }
-
-        $pedido->item()->saveMany($itens);
+        $pedido->item()->createMany($request->json('itens'));
 
         return $pedido->toJson();
     }
 
+    public function cotacao(Request $request){
+        $cotacao = new Cotacao();
+        $cotacao->tipo = 'CLIENTE';
+        $cotacao->status = Status::PUBLICADA;
+        Auth::user()->cotacao()->save($cotacao);
+        $cotacao->item()->createMany($request->json('itens'));
+
+        return "sucesso";
+    }
     public function ofertas(){
         $dados = [
             'ofertas'=> Oferta::all()
