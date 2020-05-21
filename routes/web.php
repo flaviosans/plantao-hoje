@@ -45,7 +45,7 @@ Route::group(['prefix'=>'admin', 'middleware'=> ['auth']], function (){
     Route::resource('campanhas', 'CampanhaController');
     Route::resource('campanhas.ofertas', 'OfertaController');
     Route::resource('categorias', 'CategoriaController');
-    Route::resource('cotacoes', 'CotacaoController');
+
     Route::get('cotacoes/enviadas', 'CotacaoController@enviadas')
         ->name('cotacoes.enviadas');
     Route::get('cotacoes/publicadas', 'CotacaoController@publicadas')
@@ -59,6 +59,7 @@ Route::group(['prefix'=>'admin', 'middleware'=> ['auth']], function (){
     Route::get('cotacoes/{id}/responder', 'CotacaoController@responder')
         ->name('cotacoes.responder');
     Route::resource('cotacoes.itens', 'ItemController');
+    Route::resource('cotacoes', 'CotacaoController');
     Route::resource('enderecos', 'EnderecoController');
     Route::resource('itens', 'ItemController');
     Route::resource('marcas', 'MarcaController');
