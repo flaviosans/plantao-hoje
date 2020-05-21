@@ -84,7 +84,13 @@ class FrontController extends Controller
         $cotacao->tipo = 'CLIENTE';
         $cotacao->status = Status::PUBLICADA;
         Auth::user()->cotacao()->save($cotacao);
-        $cotacao->item()->createMany($request->json('itens'));
+        $itens = [];
+        foreach ($request->json('itens') as $cada){
+            $cada['preco_normal'] = 0;
+            $cada['preco_promocao'] = 0;
+            $itens[] = $cada;
+        }
+        $cotacao->item()->createMany($itens);
 
         return "sucesso";
     }
