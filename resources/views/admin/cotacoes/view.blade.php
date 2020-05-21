@@ -25,18 +25,14 @@
                     @slot('cabecalho')
                         <th>#</th>
                         <th>Produto</th>
-                        <th>Preço</th>
                         <th>Quantidade</th>
-                        <th>Total</th>
                     @endslot
                     @slot('conteudo')
                         @foreach($cotacao->item as $cada)
                         <tr>
                             <td>{{$cada->id}}</td>
                             <td>{{$cada->produto->nome}}</td>
-                            <td>{{$cada->preco_promocao}}</td>
                             <td>{{$cada->quantidade}}</td>
-                            <td>{{$cada->quantidade * $cada->preco_promocao}}</td>
                         </tr>
                         @endforeach
                     @endslot
