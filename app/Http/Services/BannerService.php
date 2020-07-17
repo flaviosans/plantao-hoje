@@ -4,29 +4,36 @@ namespace App\Http\Services;
 
 use App\Banner;
 use App\Imagem;
+use App\Interfaces\IBannerRepository;
 use App\Interfaces\IBannerService;
 use Illuminate\Support\Facades\Auth;
 
 class BannerService implements IBannerService
 {
+
+    private $bannerRepository;
+
+    public function __construct(IBannerRepository $bannerRepository)
+    {
+        $this->bannerRepository = $bannerRepository;
+    }
+
     public function getBanners($paginate = 10)
     {
-        return Banner::where('user_id', Auth::id())
-            ->paginate(10);
+        return $this->bannerRepository->getBanners($paginate);
     }
 
     public function findBanner($id)
     {
-        return Banner::find($id);
+        return $this->bannerRepository->findBanner($id);
     }
 
     public function saveBanner($request)
     {
         $banner = new Banner();
         $banner->fill($request->all());
-        $this->bannerService->saveBanner($banner);
         $banner->user_id = Auth::id();
-        $banner->save();
+        $this->bannerRepository->saveBanner($banner);
         isset($request->imagem) ? Imagem::salvar($request->imagem, $banner) : '' ;
     }
 
