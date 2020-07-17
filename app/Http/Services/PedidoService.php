@@ -16,6 +16,7 @@ class PedidoService
         return Pedido::orderBy('created_at', 'desc')
             ->paginate($paginate);
     }
+    
     public function create(Request $request) : Pedido
     {
         $pedido = new Pedido();
