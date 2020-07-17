@@ -2,41 +2,42 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\PedidoService;
 use App\Pedido;
-use Illuminate\Http\Request;
 
 class PedidoController extends Controller
 {
-    protected $pedido_service;
+    protected $pedidoService;
 
-    public function __construct(PedidoService $pedido_service)
+    public function __construct(PedidoService $pedidoService)
     {
-        $this->pedido_service = $pedido_service;
+        $this->pedidoService = $pedidoService;
     }
+
     public function index()
     {
-        $dados = [
-            'pedidos' => $this->pedido_service->get_all()
+        $data = [
+            'pedidos' => $this->pedidoService->get_all()
         ];
 
-        return view('admin.pedidos.pedidos', $dados);
+        return view('admin.pedidos.pedidos', $data);
     }
 
     public function show(Pedido $pedido)
     {
-        $dados = [
+        $data = [
             'pedido' => $pedido,
             'endereco' => $pedido->endereco()->first()
         ];
 
-        return view('admin.pedidos.view', $dados);
+        return view('admin.pedidos.view', $data);
     }
 
     public function print(Pedido $pedido){
-        $dados = [
+        $data = [
             'pedido' => $pedido
         ];
 
-        return view('admin.pedidos.print', $dados);
+        return view('admin.pedidos.print', $data);
     }
 }
