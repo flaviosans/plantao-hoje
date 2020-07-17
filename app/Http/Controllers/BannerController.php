@@ -16,11 +16,11 @@ class BannerController extends Controller
 
     public function index()
     {
-        $dados = [
+        $data = [
           'banners'=> $this->bannerService->getBanners()
         ];
 
-        return view('admin.banners.banners', $dados);
+        return view('admin.banners.banners', $data);
     }
 
     public function create()
@@ -36,11 +36,11 @@ class BannerController extends Controller
 
     public function edit($id)
     {
-        $dados = [
+        $data = [
             'banner'=> $this->bannerService->findBanner($id)
         ];
 
-        return view('admin.banners.form', $dados);
+        return view('admin.banners.form', $data);
     }
 
     public function update(Request $request, $id)
