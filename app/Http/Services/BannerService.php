@@ -4,11 +4,9 @@ namespace App\Http\Services;
 
 use App\Banner;
 use App\Imagem;
-use App\Interfaces\IBannerRepository;
-use App\Interfaces\IBannerService;
 use Illuminate\Support\Facades\Auth;
 
-class BannerService implements IBannerService
+class BannerService
 {
 
     private $bannerRepository;

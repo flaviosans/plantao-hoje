@@ -5,10 +5,9 @@ namespace App\Repositories;
 
 
 use App\Banner;
-use App\Interfaces\IBannerRepository;
 use Illuminate\Support\Facades\Auth;
 
-class BannerRepository implements IBannerRepository
+class BannerRepository
 {
 
     public function getBanners($paginate = 10)

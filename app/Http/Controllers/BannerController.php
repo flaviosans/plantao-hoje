@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Services\BannerService;
 use Illuminate\Http\Request;
-use App\Interfaces\IBannerService;
 
 class BannerController extends Controller
 {
     private $bannerService;
 
-    public function __construct(IBannerService $bannerService)
+    public function __construct(BannerService $bannerService)
     {
         $this->bannerService = $bannerService;
     }
