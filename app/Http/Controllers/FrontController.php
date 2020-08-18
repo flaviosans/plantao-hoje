@@ -61,7 +61,7 @@ class FrontController extends Controller
 
     public function pedido(Request $request)
     {
-        $pedido = $this->pedidoService->create($request);
+        $pedido = $this->pedidoService->create($request); //TODO: Implementar salvamento de pedido melhor
 
         $pedido->item()->createMany($request->json('itens'));
 

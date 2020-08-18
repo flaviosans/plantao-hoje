@@ -23,8 +23,9 @@ class PedidoController extends Controller
         return view('admin.pedidos.pedidos', $data);
     }
 
-    public function show(Pedido $pedido)
+    public function show($id)
     {
+        $pedido = $this->pedidoService->findById($id);
         $data = [
             'pedido' => $pedido,
             'endereco' => $pedido->endereco()->first()
@@ -33,9 +34,9 @@ class PedidoController extends Controller
         return view('admin.pedidos.view', $data);
     }
 
-    public function print(Pedido $pedido){
+    public function print($id){
         $data = [
-            'pedido' => $pedido
+            'pedido' => $this->pedidoService->findById($id)
         ];
 
         return view('admin.pedidos.print', $data);

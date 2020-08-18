@@ -13,7 +13,7 @@ class BannerService implements IBannerService
 
     private $bannerRepository;
 
-    public function __construct(IBannerRepository $bannerRepository)
+    public function __construct(BannerRepository $bannerRepository)
     {
         $this->bannerRepository = $bannerRepository;
     }

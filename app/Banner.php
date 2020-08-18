@@ -13,6 +13,7 @@ class Banner extends Model
     protected $dates = ['deleted_at'];
 
     use SoftDeletes;
+
     public function imagem(){
         return $this->morphMany('\App\Imagem', 'dono');
     }
@@ -26,4 +27,6 @@ class Banner extends Model
 
         }
     }
+
+
 }

@@ -18,6 +18,12 @@ class PedidoService
             ->paginate($paginate);
     }
 
+    public function findById($id)
+    {
+        return Pedido::findOrFail($id);
+    }
+
+
     public function create(Request $request): Pedido
     {
         $pedido = new Pedido();
