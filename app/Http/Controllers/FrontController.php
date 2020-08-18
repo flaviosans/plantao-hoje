@@ -18,35 +18,40 @@ use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
-    protected $pedido_service;
+    protected $pedidoService;
 
-    public function __construct(PedidoService $pedido_service){
-        $this->pedido_service = $pedido_service;
+    public function __construct(PedidoService $pedidoService)
+    {
+        $this->pedidoService = $pedidoService;
     }
 
-    public function index(){
+    public function index()
+    {
         $dados = array(
-            'ofertas'=> Oferta::orderBy('created_at', 'desc')->take(6)->get(),
-            'marcas'=> Marca::all(),
-            'bannerTopo'=> Banner::where('tipo', 1)->get(),
-            'bannerMeio'=> Banner::where('tipo', 2)->get()
+            'ofertas' => Oferta::orderBy('created_at', 'desc')->take(6)->get(),
+            'marcas' => Marca::all(),
+            'bannerTopo' => Banner::where('tipo', 1)->get(),
+            'bannerMeio' => Banner::where('tipo', 2)->get()
         );
 
         return view('front.index', $dados);
     }
 
-    public function busca(Request $request){
-        $produto = Produto::where('nome', 'like', '%' . $request->q . '%')
+    public function busca(Request $request)
+    {
+        $produto = Produto::
+            where('nome', 'like', '%' . $request->q . '%')
             ->pluck('id')->toArray();
 
         $dados = [
-            'ofertas'=> Oferta::whereIn('produto_id', $produto)->get()
+            'ofertas' => Oferta::whereIn('produto_id', $produto)->get()
         ];
 
         return view('front.ofertas', $dados);
     }
 
-    public function checkout(Request $request){
+    public function checkout(Request $request)
+    {
         $dados = [
             'user' => Auth::user()
         ];
@@ -56,20 +61,21 @@ class FrontController extends Controller
 
     public function pedido(Request $request)
     {
-        $pedido = $this->pedido_service->create($request);
+        $pedido = $this->pedidoService->create($request);
 
         $pedido->item()->createMany($request->json('itens'));
 
         return $pedido->toJson();
     }
 
-    public function cotacao(Request $request){
+    public function cotacao(Request $request)
+    {
         $cotacao = new Cotacao();
         $cotacao->tipo = 'CLIENTE';
         $cotacao->status = Status::PUBLICADA;
         Auth::user()->cotacao()->save($cotacao);
         $itens = [];
-        foreach ($request->json('itens') as $cada){
+        foreach ($request->json('itens') as $cada) {
             $cada['preco_normal'] = 0;
             $cada['preco_promocao'] = 0;
             $itens[] = $cada;
@@ -79,15 +85,17 @@ class FrontController extends Controller
         return "sucesso";
     }
 
-    public function ofertas(){
+    public function ofertas()
+    {
         $dados = [
-            'ofertas'=> Oferta::all()
+            'ofertas' => Oferta::all()
         ];
 
         return view('front.ofertas', $dados);
     }
 
-    public function layout(){
+    public function layout()
+    {
         $dados = [
             'titulo' => 'Administração',
             'descricao' => 'Essa é a página administrativa'

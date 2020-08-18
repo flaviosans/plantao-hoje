@@ -17,7 +17,7 @@ class PedidoController extends Controller
     public function index()
     {
         $data = [
-            'pedidos' => $this->pedidoService->get_all()
+            'pedidos' => $this->pedidoService->getAll()
         ];
 
         return view('admin.pedidos.pedidos', $data);
