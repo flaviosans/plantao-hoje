@@ -27,23 +27,23 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function cotacao(){
-        return $this->hasMany('\App\Cotacao');
-    }
-
-    public function endereco(){
+    public function endereco()
+    {
         return $this->morphToMany('\App\Endereco', 'enderecavel');
     }
 
-    public function loja(){
+    public function telefone()
+    {
+        return $this->morphToMany('\App\Telefone', 'telefonavel');
+    }
+    
+    public function loja()
+    {
         return $this->hasMany('\App\Loja');
     }
 
-    public function pedido(){
+    public function pedido()
+    {
         return $this->hasMany('\App\Pedido');
-    }
-
-    public function telefone(){
-        return $this->morphToMany('\App\Telefone', 'telefonavel');
     }
 }
