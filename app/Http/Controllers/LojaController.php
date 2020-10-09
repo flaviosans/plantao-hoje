@@ -2,117 +2,72 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Interfaces\ILojaService;
 use App\Imagem;
 use App\Library\Message;
-use \App\Loja;
+use App\Loja;
 use Auth;
 use Illuminate\Http\Request;
 
 class LojaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    protected $lojaService;
+
+    public function __construct(ILojaService $lojaService)
+    {
+        $this->lojaService = $lojaService;
+    }
+    
     public function index()
     {
+        $userId = Auth::user()->id;
         $dados = [
-            'lojas'=> Loja::where('user_id', '=', Auth::user()->id)->paginate(10)
+            'lojas'=> $this->lojaService->getAll($userId, 10)
         ];
 
         return view('admin.lojas.lojas', $dados);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        $dados = [
-
-        ];
-
-        return view('admin.lojas.form', $dados);
+        return view('admin.lojas.form');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $loja = new Loja();
-        $loja->fill($request->all());
-        $loja->user_id = Auth::user()->id;
-        $loja->save();
-
-        if(isset($request->imagem)){
-            Imagem::salvar($request->imagem, $loja);
-        }
+        $userId = Auth::user()->id;
+        $loja = $this->lojaService->create($userId, $request);
 
         return redirect()->route('lojas.index');
-
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
+        $userId = Auth::user()->id;
+
         $dados  = [
-            'loja'=> Loja::findOrFail($id)
+            'loja'=> $this->lojaService->getOne($userId, $id)
         ];
 
         return view('admin.lojas.form', $dados);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        $loja = Loja::findOrFail($id);
-        $loja->fill($request->all());
-        $loja->save();
-
-        if(isset($request->imagem)){
-            Imagem::atualizar($request->imagem, $loja);
-        }
+        $userId = Auth::user()->id;
+        
+        $this->lojaService->update($userId, $id, $request);
 
         Message::info('Loja Atualizada com sucesso!');
 
         return redirect()->route('lojas.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         Message::info('Não é possível apagar uma loja! Entre em Contato com a nossa equipe!');
