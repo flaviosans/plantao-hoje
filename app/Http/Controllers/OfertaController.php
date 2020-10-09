@@ -12,11 +12,6 @@ use Illuminate\Http\Request;
 
 class OfertaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index($id = null)
     {
 
@@ -37,11 +32,6 @@ class OfertaController extends Controller
         return view('admin.ofertas.ofertas', $dados);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create($id)
     {
         $dados = [
@@ -50,12 +40,6 @@ class OfertaController extends Controller
         return view('admin.ofertas.form', $dados);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(OfertaRequest $request, $id)
     {
         $oferta = new Oferta;
@@ -75,23 +59,6 @@ class OfertaController extends Controller
         return redirect()->route('campanhas.ofertas.index', $id);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($campanha, $id)
     {
         $dados = array(
@@ -101,13 +68,6 @@ class OfertaController extends Controller
         return view('admin.ofertas.form', $dados);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(OfertaRequest $request, $campanha, $id)
     {
         $oferta = Oferta::findOrFail($id);
@@ -118,13 +78,6 @@ class OfertaController extends Controller
 
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @param  $campanha
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($campanha, $id)
     {
         $oferta = Oferta::findOrFail($id);
