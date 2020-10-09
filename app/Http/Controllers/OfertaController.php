@@ -14,7 +14,6 @@ class OfertaController extends Controller
 {
     public function index($id = null)
     {
-
         if($id == null){
             $dados = array(
                 'ofertas'=> Loja::find(session('loja'))->oferta()->paginate(10),
@@ -75,7 +74,6 @@ class OfertaController extends Controller
         $oferta->save();
 
         return redirect()->route('campanhas.ofertas.index', $campanha);
-
     }
 
     public function destroy($campanha, $id)
