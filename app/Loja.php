@@ -3,12 +3,17 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Campanha;
 
 class Loja extends Model
 {
     protected $fillable = ['nome'];
     protected $guarded = ['id', 'created_at', 'updated_at'];
     
+    public function campanha(){
+        return $this->hasMany(Campanha::class);
+    }
+
     public function endereco(){
         return $this->morphToMany('\App\Endereco', 'enderecavel');
     }
@@ -21,15 +26,7 @@ class Loja extends Model
         return $this->morphMany('\App\Imagem', 'dono');
     }
 
-    public function produto(){
-        return $this->hasMany('\App\Produto');
-    }
-
     public function user(){
         return $this->belongsTo('\App\User');
-    }
-
-    public function item(){
-        return $this->hasManyThrough('\App\Item', '\App\Cotacao');
     }
 }

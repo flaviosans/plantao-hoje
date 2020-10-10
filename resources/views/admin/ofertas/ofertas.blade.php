@@ -84,25 +84,6 @@
                         </td>
                     </tr>
                 @endforeach
-
-                    <!--form id="oferta" action="{{route('campanhas.ofertas.store', $campanha->id)}}" method="POST">
-                        {{csrf_field()}}
-                        <tr>
-                            <td>0</td>
-                            <td><input type="text" name="produto_id" value="{{old('produto_id')}}"></td>
-                            <td><input type="text" name="preco_normal" value="{{old('preco_normal')}}"></td>
-                            <td>
-                                <input type="text" name="preco_promocao" value="{{old('preco_promocao')}}">
-
-                            </td>
-                            <td><input type="number" name="quantidade"></td>
-
-                            <td>
-                                <a href="#" onclick="event.preventDefault(); document.getElementById('oferta').submit();">Salvar</a>
-                            </td>
-                        </tr>
-                    </form-->
-
             @endslot
             @endcomponent
         @endslot

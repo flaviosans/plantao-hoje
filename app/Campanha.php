@@ -5,6 +5,7 @@ namespace App;
 use \App\Library\Date;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Oferta;
 
 class Campanha extends Model
 {
@@ -22,8 +23,8 @@ class Campanha extends Model
         $this->attributes['validade'] = Date::toUTF($value);
     }
 
-    public function item(){
-        return $this->morphMany('\App\Item', 'lista');
+    public function oferta(){
+        return $this->hasMany(Oferta::class);
     }
 
     public function oferta(){
@@ -42,7 +43,7 @@ class Campanha extends Model
     }
 
     public function getQuantasOfertasAttribute(){
-        return $this->item()->count();
+        return $this->oferta()->count();
     }
 
 

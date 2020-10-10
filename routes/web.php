@@ -12,31 +12,26 @@
 */
 
 Route::get('/', 'FrontController@index')
-    ->name('index');
+->name('index');
 Route::get('/busca', 'FrontController@busca')
-    ->name('busca');
+->name('busca');
 Route::get('/itens', 'FrontController@itens')
-    ->name('itens');
+->name('itens');
 Route::get('/ofertas', 'FrontController@ofertas')
-    ->name('ofertas');
+->name('ofertas');
 
-Route::group(['middleware' => 'auth'], function(){
-    Route::post('/pedido', 'FrontController@pedido')
-        ->name('pedido');
-    Route::post('/cotacao', 'FrontController@cotacao')
-        ->name('cotacao');
-    Route::get('/checkout', 'FrontController@checkout')
-        ->name('checkout');
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('/checkout', 'FrontController@pedido')->name('store');
+    Route::get('/checkout', 'FrontController@checkout')->name('checkout');
     Route::resource('lojas', 'LojaController');
-    Route::get('/admin/session/setloja/{id}','HomeController@setloja')
-        ->name('setLoja');
+    Route::get('/admin/session/setloja/{id}', 'HomeController@setloja')->name('setLoja');
 });
 
 Route::get('layout', 'FrontController@layout');
 
 Auth::routes();
 
-Route::group(['prefix'=>'admin', 'middleware'=> ['auth']], function (){
+Route::group(['prefix'=>'admin', 'middleware'=> ['auth', 'checalojaselecionada']], function () {
     Route::get('/', 'HomeController@index');
     Route::get('dashboard', 'HomeController@dashboard')
         ->name('home.dashboard');
@@ -70,6 +65,6 @@ Route::group(['prefix'=>'admin', 'middleware'=> ['auth']], function (){
     Route::get('produtos/importar', 'ProdutoController@importar')
         ->name('produtos.importar');
     Route::resource('produtos', 'ProdutoController');
-    Route::resource('tags','TagController');
-    Route::resource('tokens', 'TokenController');
+    route::resource('tags', 'TagController');
+    route::resource('tokens', 'TokenController');
 });
