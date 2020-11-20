@@ -20,7 +20,7 @@ class CampanhaController extends Controller
     public function index()
     {
         $dados = array(
-            'campanhas'=> Campanha::where('loja_id','=', session('loja'))->orderBy('created_at', 'desc')->paginate(3),
+            'campanhas'=> Campanha::where('loja_id','=', session('loja'))->orderBy('created_at', 'desc')->paginate(3), //TODO: PUXAR DO SERVICE
             'titulo'=>'Campanhas'
         );
         return view('admin.campanhas.campanhas', $dados);
@@ -78,7 +78,7 @@ class CampanhaController extends Controller
     public function edit($id)
     {
         $dados = array(
-            'campanha' => Campanha::find($id)
+            'campanha' => Campanha::find($id) // puxar do service
         );
 
         return view ('admin.campanhas.form', $dados);
