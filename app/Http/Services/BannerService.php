@@ -5,6 +5,7 @@ namespace App\Http\Services;
 use App\Banner;
 use App\Imagem;
 use Illuminate\Support\Facades\Auth;
+use App\Repositories\BannerRepository;
 
 class BannerService
 {

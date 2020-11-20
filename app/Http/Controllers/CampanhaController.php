@@ -2,27 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Campanha;
-use App\Http\Requests\CampanhaRequest;
 use App\Imagem;
+use App\Campanha;
 use App\Library\File;
 use App\Library\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\CampanhaRequest;
+use App\Http\Services\CampanhaService;
 
 class CampanhaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    private $campanhaService;
+
+    public function __construct(
+        CampanhaService $campanhaService
+    )
+    {
+        $this->campanhaService = $campanhaService;
+    }
     public function index()
     {
         $dados = array(
-            'campanhas'=> Campanha::where('loja_id','=', session('loja'))->orderBy('created_at', 'desc')->paginate(3), //TODO: PUXAR DO SERVICE
+            'campanhas'=> $this->campanhaService->getCampanhas(10),
             'titulo'=>'Campanhas'
         );
+        
         return view('admin.campanhas.campanhas', $dados);
     }
 
@@ -44,14 +49,7 @@ class CampanhaController extends Controller
      */
     public function store(CampanhaRequest $request)
     {
-        $campanha = new Campanha();
-        $campanha->loja_id = session()->get('loja');
-        $campanha->fill($request->all());
-        $campanha->save();
-
-        if(isset($request->imagem)){
-            Imagem::salvar($request->imagem, $campanha);
-        }
+        $campanha = $this->campanhaService->saveCampanha($request);
 
         Message::info('Gravado Com Sucesso!');
 
@@ -78,7 +76,7 @@ class CampanhaController extends Controller
     public function edit($id)
     {
         $dados = array(
-            'campanha' => Campanha::find($id) // puxar do service
+            'campanha' => $this->campanhaService->findCampanha($id)
         );
 
         return view ('admin.campanhas.form', $dados);
@@ -93,9 +91,7 @@ class CampanhaController extends Controller
      */
     public function update(CampanhaRequest $request, $id)
     {
-        $campanha = Campanha::findOrFail($id);
-        $campanha->fill($request->all());
-        $campanha->save();
+        $campanha = $this->campanhaService->updateCampanha($request, $id);
 
         if(isset($request->imagem)){
             Imagem::atualizar($request->imagem, $campanha);
@@ -112,10 +108,8 @@ class CampanhaController extends Controller
      */
     public function destroy($id)
     {
-        $campanha = Campanha::findOrFail($id);
-        File::delete($campanha->banner);
-        $campanha->delete();
-
+        $this->campanhaService->deleteCampanha($id);
+        
         Message::info('Apagado Com Sucesso');
         return redirect()->route('campanhas.index');
     }

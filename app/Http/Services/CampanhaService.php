@@ -2,30 +2,42 @@
 
 namespace App\Http\Services;
 
+use App\Campanha;
+use App\Repositories\CampanhaRepository;
+
 class CampanhaService
 {
+    private $campanhaRepository;
+
+    public function __construct(
+        CampanhaRepository $campanhaRepository
+    )
+    {
+        $this->campanhaRepository = $campanhaRepository;
+    }
+
     public function getCampanhas($paginate = 10)
     {
-        # code...
+        return $this->campanhaRepository->getCampanhas($paginate);
     }
 
     public function findCampanha($id)
     {
-        # code...
+        return $this->campanhaRepository->findCampanha($id);
     }
 
     public function saveCampanha($request)
     {
-        # code...
+        return $this->campanhaRepository->saveCampanha($request);
     }
 
     public function updateCampanha($request, $id)
     {
-        # code...
+        return $this->campanhaRepository->updateCampanha($request, $id);
     }
 
     public function deleteCampanha($id)
     {
-        # code...
+        return $this->campanhaRepository->deleteCampanha($id);
     }
 }
