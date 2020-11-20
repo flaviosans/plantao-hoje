@@ -26,10 +26,6 @@ class CampanhaRepository
         $campanha->fill($request->all());
         $campanha->save();
 
-        if(isset($request->imagem)){
-            Imagem::salvar($request->imagem, $campanha);
-        }
-        
         return $campanha;
     }
 

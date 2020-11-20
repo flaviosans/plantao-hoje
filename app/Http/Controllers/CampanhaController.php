@@ -91,11 +91,7 @@ class CampanhaController extends Controller
      */
     public function update(CampanhaRequest $request, $id)
     {
-        $campanha = $this->campanhaService->updateCampanha($request, $id);
-
-        if(isset($request->imagem)){
-            Imagem::atualizar($request->imagem, $campanha);
-        }
+        $this->campanhaService->updateCampanha($request, $id);
 
         return redirect()->route('campanhas.index');
     }

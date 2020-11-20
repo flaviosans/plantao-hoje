@@ -2,6 +2,7 @@
 
 namespace App\Http\Services;
 
+use App\Imagem;
 use App\Campanha;
 use App\Repositories\CampanhaRepository;
 
@@ -28,12 +29,24 @@ class CampanhaService
 
     public function saveCampanha($request)
     {
-        return $this->campanhaRepository->saveCampanha($request);
+        $campanha = $this->campanhaRepository->saveCampanha($request);
+
+        if(isset($request->imagem)){
+            Imagem::salvar($request->imagem, $campanha);
+        }
+        
+        return $campanha;
     }
 
     public function updateCampanha($request, $id)
     {
-        return $this->campanhaRepository->updateCampanha($request, $id);
+        $campanha = $this->campanhaRepository->updateCampanha($request, $id);
+
+        if(isset($request->imagem)){
+            Imagem::atualizar($request->imagem, $campanha);
+        }
+
+        return $campanha;
     }
 
     public function deleteCampanha($id)
