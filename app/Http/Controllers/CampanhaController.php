@@ -2,12 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Imagem;
-use App\Campanha;
-use App\Library\File;
 use App\Library\Message;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CampanhaRequest;
 use App\Http\Services\CampanhaService;
 

@@ -2,8 +2,8 @@
 
 namespace App\Repositories;
 
-use App\Imagem;
 use App\Campanha;
+use App\Library\File;
 
 class CampanhaRepository
 {
@@ -41,7 +41,6 @@ class CampanhaRepository
     public function deleteCampanha($id)
     {
         $campanha = Campanha::findOrFail($id);
-        File::delete($campanha->banner);
         $campanha->delete();
     }
 }

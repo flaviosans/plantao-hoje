@@ -4,6 +4,7 @@ namespace App\Http\Services;
 
 use App\Imagem;
 use App\Campanha;
+use App\Library\File;
 use App\Repositories\CampanhaRepository;
 
 class CampanhaService
@@ -51,6 +52,9 @@ class CampanhaService
 
     public function deleteCampanha($id)
     {
-        return $this->campanhaRepository->deleteCampanha($id);
+        File::delete($campanha->banner);
+        $campanha = $this->campanhaRepository->deleteCampanha($id);
+
+        return $campanha;
     }
 }

@@ -6,7 +6,6 @@ use App\Categoria;
 use App\Http\Requests\CategoriaRequest;
 use App\Imagem;
 use App\Library\Message;
-use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
 {
